@@ -1,5 +1,5 @@
 {
-  "name": "habbit-tracker",
+  "name": "habit-tracker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,7 +12,7 @@
     "react-scripts": "^4.0.3",
     "web-vitals": "^1.0.1"
   },
-  "homepage": "https://syedmwgilani.github.io/habbit-tracker/",
+  "homepage": "https://syedmwgilani.github.io/habit-tracker/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
