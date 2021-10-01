@@ -1,6 +1,6 @@
 import { Component } from "react"
 import WeekInput from "./WeekInput";
-const {setNestedVal} = require('./helperModule.js');
+const {setNestedVal, generateUIDKey} = require('./helperModule.js');
 
 class HabitTemplate extends Component {
 
@@ -36,6 +36,21 @@ class HabitTemplate extends Component {
         this.setState(copyState)
 
         // this.setState({ [name]: value });
+    }
+
+    saveStateToLocalStorage(state) {
+        let JSONactiveHabitTemp = localStorage.getItem('activeHabitTemplates')
+        if(!JSONactiveHabitTemp) {
+            JSONactiveHabitTemp = JSON.stringify({});
+            localStorage.setItem('activeHabitTemplates', JSONactiveHabitTemp)
+        } 
+        
+        let activeHabitTemp = JSON.parse(JSONactiveHabitTemp)
+        const uid = generateUIDKey(activeHabitTemp)
+        activeHabitTemp[uid] = (state)
+        localStorage.setItem('activeHabitTemplates', JSON.stringify(activeHabitTemp))
+
+        // TODO On save this should go back to the Habits Page
     }
 
     render() {
@@ -100,6 +115,9 @@ class HabitTemplate extends Component {
                             onChange={ (event) => this.handleInputChange(event) }
                         />
                     </label>
+                </div>
+                <div>
+                    <button onClick={ event => this.saveStateToLocalStorage(this.state) }>Save</button>
                 </div>
             </div>
         )

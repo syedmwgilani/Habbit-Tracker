@@ -20,5 +20,14 @@ module.exports = {
 
             return innerObj[prop]
         }, obj);
-    }
+    },
+
+    //obj - check object keys to see if id exists
+    generateUIDKey: function (obj) {
+        let ranNumStr = Math.floor(Math.random() * 1.0e+16).toString()
+        while(obj[ranNumStr]) {
+            ranNumStr = Math.floor(Math.random() * 1.0e+16).toString()
+        }
+        return ranNumStr;
+    },
 }

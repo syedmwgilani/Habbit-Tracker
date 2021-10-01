@@ -1,9 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import HabitTemplate from './HabitTemplate'
-// import Objects from './Objects'
-// import ProgressBar from './ProgressBar'
 // import App from './App'
+// import HabitTemplate from './HabitTemplate'
+import Habits from './Habits'
+// import ProgressBar from './ProgressBar'
+
 
 
 import './index.css'
@@ -25,5 +26,5 @@ let data = {
     "reminderTimes": "8:30 PM"
 };
 
-ReactDOM.render(<HabitTemplate {...data}/>, document.getElementById('root'))
+ReactDOM.render(<Habits {...data}/>, document.getElementById('root'))
 
