@@ -2,11 +2,10 @@
 
 ## TODOs
 
-1. Save data on Habit Template page to local storage
-2. Create a progress bar.
+1. Create a progress bar.
    - This should be two different shades of green
-3. Make progress bar clickable.
-4. Create a list of Habit objects that hold the progress bars.
+2. Make progress bar clickable.
+3. Create a list of Habit objects that hold the progress bars.
 
 
 # Getting Started with Create React App

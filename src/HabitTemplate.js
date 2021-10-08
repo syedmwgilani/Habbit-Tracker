@@ -38,7 +38,8 @@ class HabitTemplate extends Component {
         // this.setState({ [name]: value });
     }
 
-    saveStateToLocalStorage(state) {
+    //TODO send to helper modules
+    saveStateToLocalStorage() {
         let JSONactiveHabitTemp = localStorage.getItem('activeHabitTemplates')
         if(!JSONactiveHabitTemp) {
             JSONactiveHabitTemp = JSON.stringify({});
@@ -47,10 +48,11 @@ class HabitTemplate extends Component {
         
         let activeHabitTemp = JSON.parse(JSONactiveHabitTemp)
         const uid = generateUIDKey(activeHabitTemp)
-        activeHabitTemp[uid] = (state)
+        activeHabitTemp[uid] = (this.state)
         localStorage.setItem('activeHabitTemplates', JSON.stringify(activeHabitTemp))
 
-        // TODO On save this should go back to the Habits Page
+        //TODO On save this should go back to the Habits Page
+        // maybe  make it a call back function???
     }
 
     render() {
@@ -117,7 +119,7 @@ class HabitTemplate extends Component {
                     </label>
                 </div>
                 <div>
-                    <button onClick={ event => this.saveStateToLocalStorage(this.state) }>Save</button>
+                    <button onClick={ event => this.saveStateToLocalStorage() }>Save</button>
                 </div>
             </div>
         )

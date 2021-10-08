@@ -7,19 +7,19 @@
 }
 
 .margin1 {}
-.content {
-    
-}
+
+.content {}
+
 .margin2 {}
 
 .bg-light-gray {
-    background-color: #f1f1f1!important;
+    background-color: #f1f1f1 !important;
 }
 
 .bg-blue {
-    background-color: #0074d9!important;
+    background-color: #0074d9 !important;
 }
 
 .white {
-    color: #fff!important;
+    color: #fff !important;
 }
