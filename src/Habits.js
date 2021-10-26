@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-const {addPrefix} = require('./helperModule.js');
+const { addPrefix } = require('./helperModule.js');
 
 
 function InnerBar(props) {
@@ -44,7 +44,7 @@ class Habits extends Component {
         const today = new Date()
         const daysOfTheWeeks = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
         const dayOfTheWeek = daysOfTheWeeks[today.getDay()]
-        
+
         const monthStr = (today.getMonth() + 1).toString()
         const dayStr = today.getDate().toString()
         const dateString = today.getFullYear() + '_'
@@ -59,22 +59,48 @@ class Habits extends Component {
         let habits = []
         if (activeHabitTemp) {
             const JSONhabits = localStorage.getItem('habits_' + dateString)
-            if(!JSONhabits) {
+            //TODO do a more thorough search of the data in JSONhabits. 
+            //When generating older dates to add progress this will get tricky
+            if (JSONhabits === null) {
                 habits = Object.keys(activeHabitTemp).reduce((habits, key) => {
                     if (activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]) {
                         const habit = {}
-                        habit.id = key
+                        habit.templateId = key
                         habit.name = activeHabitTemp[key].name
                         habit.dailyOccurrence = activeHabitTemp[key].dailyOccurrence
                         habit.progress = 0
-    
+
                         habits.push(habit)
                         return habits
                     }
                     return habits
                 }, [])
             } else {
-                habits = JSON.parse(JSONhabits)
+                const oldHabitsData = JSON.parse(JSONhabits)
+
+                habits = Object.keys(activeHabitTemp).reduce((acc, key) => {
+
+                    let habit = oldHabitsData.find(habit => habit.templateId === key)
+
+                    if(habit && activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]) {
+                        habit.name = activeHabitTemp[key].name
+                        habit.dailyOccurrence = activeHabitTemp[key].dailyOccurrence
+
+                        acc.push(habit)
+                        return acc
+                    } else if(activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]){
+                        habit = {}
+                        habit.templateId = key
+                        habit.name = activeHabitTemp[key].name
+                        habit.dailyOccurrence = activeHabitTemp[key].dailyOccurrence
+                        habit.progress = 0
+
+                        acc.push(habit)
+                        return acc
+                    }
+
+                    return acc
+                }, [])
             }
         }
 
@@ -99,7 +125,7 @@ class Habits extends Component {
     incrementProgress(id, i) {
         console.log(`---\nCLICKED habits[${i}]`);
 
-        let habits = [ ...this.state.habits ]
+        let habits = [...this.state.habits]
         let habit = habits[i]
 
         const increment = 100 / habit.dailyOccurrence
@@ -115,7 +141,7 @@ class Habits extends Component {
 
         const habitsEleMap = this.state.habits.map((habit, i) => {
             return (
-                <li key={habit.id}>
+                <li key={habit.templateId}>
                     <Habit {...habit} onClick={event => this.incrementProgress(habit.id, i)} />
                 </li>
             )

@@ -15,8 +15,8 @@ localStorage.getItem('activeHabitTemplates') OR localStorage.getItem('inactiveHa
 		"name": "Push ups",
 		"numberOfDays": 32,
 		"weeklyOccurrence": {
-			"Monday": false,
-			"Tuesday": false,
+			"Monday": true,
+			"Tuesday": true,
 			"Wednesday": true,
 			"Thursday": false,
 			"Friday": true,
