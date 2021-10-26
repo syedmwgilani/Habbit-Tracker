@@ -8,27 +8,24 @@ import Habits from './Habits'
 import './index.css'
 
 // data for HabitTemplate
-// let data = {
+// const data = {
 //     "name": "Push ups",
 //     "numberOfDays": 32,
 //     "weeklyOccurrence": {
-//         "monday": false,
-//         "tuesday": false,
-//         "wednesday": true,
-//         "thursday": false,
-//         "friday": true,
-//         "saturday": false,
-//         "sunday": false
+//         "Monday": false,
+//         "Tuesday": false,
+//         "Wednesday": true,
+//         "Thursday": false,
+//         "Friday": true,
+//         "Saturday": false,
+//         "Sunday": false
 //     },
 //     "dailyOccurrence": 2,
 //     "reminder": true,
 //     "reminderTimes": "8:30 PM"
 // };
 
-// data for Habits
-let data = {
-    increment: 5,
-}
+const data = {}
 
 ReactDOM.render(<Habits {...data}/>, document.getElementById('root'))
 

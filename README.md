@@ -8,6 +8,39 @@
 3. Create a list of Habit objects that hold the progress bars.
 
 
+localStorage.getItem('activeHabitTemplates') OR localStorage.getItem('inactiveHabitTemplates')
+
+{
+	"3330192929643203": {
+		"name": "Push ups",
+		"numberOfDays": 32,
+		"weeklyOccurrence": {
+			"Monday": false,
+			"Tuesday": false,
+			"Wednesday": true,
+			"Thursday": false,
+			"Friday": true,
+			"Saturday": false,
+			"Sunday": false
+		},
+		"dailyOccurrence": 2,
+		"reminder": true,
+		"reminderTimes": "8:30 PM"
+	}
+}
+
+localStorage.getItem('habits_2021_10_25')
+
+[
+   {
+      "templateId":"3330192929643203",
+      "name":"Push ups",
+      "dailyOccurrence":2,
+      "progress": 0
+   },
+]
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

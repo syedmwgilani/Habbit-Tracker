@@ -30,4 +30,8 @@ module.exports = {
         }
         return ranNumStr;
     },
+
+    addPrefix: function (condition, sting, prefix) {
+        return condition() ? sting : prefix + sting
+    },
 }
