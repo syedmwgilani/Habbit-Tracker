@@ -56,51 +56,50 @@ class Habits extends Component {
         const activeHabitTemp = JSON.parse(JSONactiveHabitTemp)
         console.log('LOADED activeHabitTemp: ', activeHabitTemp)
 
-        let habits = []
+        let habits = {}
         if (activeHabitTemp) {
             const JSONhabits = localStorage.getItem('habits_' + dateString)
-            //TODO do a more thorough search of the data in JSONhabits. 
-            //When generating older dates to add progress this will get tricky
+
             if (JSONhabits === null) {
+                //Create new habits obj
                 habits = Object.keys(activeHabitTemp).reduce((habits, key) => {
                     if (activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]) {
                         const habit = {}
-                        habit.templateId = key
                         habit.name = activeHabitTemp[key].name
                         habit.dailyOccurrence = activeHabitTemp[key].dailyOccurrence
                         habit.progress = 0
 
-                        habits.push(habit)
+                        habits[key] = habit
                         return habits
                     }
                     return habits
-                }, [])
+                }, {})
             } else {
+                //Update old habits obj
                 const oldHabitsData = JSON.parse(JSONhabits)
 
-                habits = Object.keys(activeHabitTemp).reduce((acc, key) => {
+                habits = Object.keys(activeHabitTemp).reduce((habits, key) => {
 
-                    let habit = oldHabitsData.find(habit => habit.templateId === key)
+                    let habit = oldHabitsData[key]
 
                     if(habit && activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]) {
                         habit.name = activeHabitTemp[key].name
                         habit.dailyOccurrence = activeHabitTemp[key].dailyOccurrence
 
-                        acc.push(habit)
-                        return acc
+                        habits[key] = habit
+                        return habits
                     } else if(activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]){
                         habit = {}
-                        habit.templateId = key
                         habit.name = activeHabitTemp[key].name
                         habit.dailyOccurrence = activeHabitTemp[key].dailyOccurrence
                         habit.progress = 0
 
-                        acc.push(habit)
-                        return acc
+                        habits[key] = habit
+                        return habits
                     }
 
-                    return acc
-                }, [])
+                    return habits
+                }, {})
             }
         }
 
@@ -115,34 +114,33 @@ class Habits extends Component {
     }
 
     saveHabitLocalStorage() {
-        console.log('SAVING...', this.state);
-
         const habitsJson = JSON.stringify(this.state.habits)
         localStorage.setItem('habits_' + this.state.dateString, habitsJson)
+        
         console.log('SAVED Habits', habitsJson);
     }
 
-    incrementProgress(id, i) {
-        console.log(`---\nCLICKED habits[${i}]`);
+    incrementProgress(id) {
+        console.log(`---\nCLICKED habits['${id}']`);
 
-        let habits = [...this.state.habits]
-        let habit = habits[i]
+        let habits = {...this.state.habits}
+        let habit = habits[id]
 
         const increment = 100 / habit.dailyOccurrence
         habit.progress = habit.progress + increment
 
-        console.log(habits[i])
+        console.log('UPDATED ', habits[id])
         this.setState({
             habits: habits
         }, this.saveHabitLocalStorage.bind(this))
     }
 
     render(props) {
-
-        const habitsEleMap = this.state.habits.map((habit, i) => {
+        const habits = {...this.state.habits}
+        const habitsEleMap = Object.keys(habits).map((key, i) => {
             return (
-                <li key={habit.templateId}>
-                    <Habit {...habit} onClick={event => this.incrementProgress(habit.id, i)} />
+                <li key={key}>
+                    <Habit {...habits[key]} onClick={event => this.incrementProgress(key)} />
                 </li>
             )
         })

@@ -7,6 +7,12 @@
 2. Make progress bar clickable.
 3. Create a list of Habit objects that hold the progress bars.
 
+## Limitations:
+
+- Due to the limitations of localStorage, this will only show data for a year.
+   - The user will only be able to go back input data for about a year prior.
+   - Make this apparent to the user.
+- Add feature to delete habits that are older than a year.
 
 localStorage.getItem('activeHabitTemplates') OR localStorage.getItem('inactiveHabitTemplates')
 
@@ -31,14 +37,13 @@ localStorage.getItem('activeHabitTemplates') OR localStorage.getItem('inactiveHa
 
 localStorage.getItem('habits_2021_10_25')
 
-[
-   {
-      "templateId":"3330192929643203",
+{
+   "3330192929643203": {
       "name":"Push ups",
       "dailyOccurrence":2,
       "progress": 0
    },
-]
+}
 
 
 # Getting Started with Create React App
