@@ -5,7 +5,17 @@
 1. Create a progress bar.
    - This should be two different shades of green
 2. Make progress bar clickable.
-3. Create a list of Habit objects that hold the progress bars.
+3. Add notifications.
+4. Add a way to move habitTemplate from active to inactive in habit page.
+5. Add a decrement progress button
+6. Add routing between pages.
+   Work on example with this first:
+   - [Local Demo to work on](/Users/syedgilani/Documents/react-demo-app)
+   - [Easy Demo](https://www.taniarascia.com/using-react-router-spa/)
+   - [Documentation](https://reactrouter.com/web/guides/quick-start)
+
+
+
 
 ## Limitations:
 
@@ -13,6 +23,8 @@
    - The user will only be able to go back input data for about a year prior.
    - Make this apparent to the user.
 - Add feature to delete habits that are older than a year.
+
+---
 
 localStorage.getItem('activeHabitTemplates') OR localStorage.getItem('inactiveHabitTemplates')
 
