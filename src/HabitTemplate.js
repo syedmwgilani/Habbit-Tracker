@@ -11,13 +11,13 @@ class HabitTemplate extends Component {
             name: props.name,
             numberOfDays: props.numberOfDays,
             weeklyOccurrence: {
-                monday: dot(false, props, 'weeklyOccurrence', 'monday'),
-                tuesday: dot(false, props, 'weeklyOccurrence', 'tuesday'),
-                wednesday: dot(false, props, 'weeklyOccurrence', 'wednesday'),
-                thursday: dot(false, props, 'weeklyOccurrence', 'thursday'),
-                friday: dot(false, props, 'weeklyOccurrence', 'friday'),
-                saturday: dot(false, props, 'weeklyOccurrence', 'saturday'),
-                sunday: dot(false, props, 'weeklyOccurrence', 'sunday')
+                Monday: dot(false, props, 'weeklyOccurrence', 'Monday'),
+                Tuesday: dot(false, props, 'weeklyOccurrence', 'Tuesday'),
+                Wednesday: dot(false, props, 'weeklyOccurrence', 'Wednesday'),
+                Thursday: dot(false, props, 'weeklyOccurrence', 'Thursday'),
+                Friday: dot(false, props, 'weeklyOccurrence', 'Friday'),
+                Saturday: dot(false, props, 'weeklyOccurrence', 'Saturday'),
+                Sunday: dot(false, props, 'weeklyOccurrence', 'Sunday')
             },
             dailyOccurrence: props.dailyOccurrence,
             reminder: props.reminder,

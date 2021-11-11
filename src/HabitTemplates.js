@@ -1,10 +1,30 @@
+function Days(props) {
+    return <div key={props.keyVal}>{props.day}: {props.vals}</div>
+}
 function HabitTemplates(props) {
 
     let JSONactiveHabitTemp = localStorage.getItem('activeHabitTemplates')
     let activeHabitTemp = JSON.parse(JSONactiveHabitTemp)
 
-    let activeHabitNames = Object.keys(activeHabitTemp).map(
-        (key) => <li key={key}>{activeHabitTemp[key].name}</li>)
+    const daysOfTheWeeks = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
+    let activeHabitTempList = Object.keys(activeHabitTemp).map(
+        (key) =>
+            <li key={key}>
+                <div>{activeHabitTemp[key].name}</div>
+                <ul>
+                {
+                    daysOfTheWeeks.map((day, i) => 
+                    <li key={i}>
+                        <Days
+                        day = {day}
+                        vals = {activeHabitTemp[key].weeklyOccurrence[day] + ''} />
+                    </li>
+                    )
+                }
+                </ul>
+            </li>
+    )
 
     // let inactiveHabits = props.habits.filter(habit => !habit.active)
     // let inactiveHabitNames = inactiveHabits.map(habit => <li>{habit.name}</li>)
@@ -17,7 +37,7 @@ function HabitTemplates(props) {
                 <h3>Habits Page</h3>
                 <h4>Active Habits:</h4>
                 <ul>
-                    {activeHabitNames}
+                    {activeHabitTempList}
                 </ul>
                 {/* <h4>Inactive Habits:</h4>
                 <ul>
