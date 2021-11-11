@@ -10,9 +10,9 @@ export default function App() {
           paddingBottom: "1rem"
         }}
       >
-        <Link to="/habits">Habits</Link> |{" "}
-        <Link to="/habit-template">Habit Template</Link> |{" "}
-        <Link to="/habit-templates">Habit Templates</Link>
+        <Link to="/habit-tracker/habits">Habits</Link> |{" "}
+        <Link to="/habit-tracker/habit-template">Habit Template</Link> |{" "}
+        <Link to="/habit-tracker/habit-templates">Habit Templates</Link>
       </nav>
       <Outlet />
     </div>

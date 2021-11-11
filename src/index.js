@@ -15,7 +15,7 @@ const rootElement = document.getElementById("root");
 render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />}>
+      <Route path="/habit-tracker/" element={<App />}>
         <Route path="habits" element={<Habits />} />
         <Route path="habit-template" element={<HabitTemplate />} />
         <Route path="habit-templates" element={<HabitTemplates />} />
