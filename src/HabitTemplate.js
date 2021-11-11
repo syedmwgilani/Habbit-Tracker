@@ -20,8 +20,10 @@ class HabitTemplate extends Component {
                 Sunday: dot(false, props, 'weeklyOccurrence', 'Sunday')
             },
             dailyOccurrence: dot(0, props, 'dailyOccurrence'),
-            reminder: dot(false, props, 'reminder'),
-            reminderTimes: dot('', props, 'reminderTimes'),
+            //reminder: dot(false, props, 'reminder'),
+            //reminderTimes: dot('', props, 'reminderTimes'),
+            //TODO Allow for multiple reminder times
+            //May allow this to be an array
         }
     }
 
@@ -96,7 +98,7 @@ class HabitTemplate extends Component {
                         />
                     </label>
                 </div>
-                <div>
+                {/* <div>
                     <label htmlFor="reminderId">
                         <span>Reminder:</span>
                         <input type="checkbox"
@@ -117,7 +119,7 @@ class HabitTemplate extends Component {
                             onChange={ (event) => this.handleInputChange(event) }
                         />
                     </label>
-                </div>
+                </div> */}
                 <div>
                     <button onClick={ event => this.saveStateToLocalStorage() }>Save</button>
                 </div>

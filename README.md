@@ -14,7 +14,10 @@
    - [Easy Demo](https://reactrouter.com/docs/en/v6/getting-started/tutorial)
    - [Documentation](https://reactrouter.com/web/guides/quick-start)
 
+## TODOs Wish list
 
+1. Create an array that hold reminders in HabitTemplate.js
+	- In Habits.js look at all the reminder times and create notifications based on those.
 
 
 ## Limitations:
