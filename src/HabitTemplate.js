@@ -8,8 +8,8 @@ class HabitTemplate extends Component {
         super(props)
 
         this.state = {
-            name: props.name,
-            numberOfDays: props.numberOfDays,
+            name: dot('', props, 'name'),
+            numberOfDays: dot(0, props, 'numberOfDays'),
             weeklyOccurrence: {
                 Monday: dot(false, props, 'weeklyOccurrence', 'Monday'),
                 Tuesday: dot(false, props, 'weeklyOccurrence', 'Tuesday'),
@@ -19,9 +19,9 @@ class HabitTemplate extends Component {
                 Saturday: dot(false, props, 'weeklyOccurrence', 'Saturday'),
                 Sunday: dot(false, props, 'weeklyOccurrence', 'Sunday')
             },
-            dailyOccurrence: props.dailyOccurrence,
-            reminder: props.reminder,
-            reminderTimes: props.reminderTimes,
+            dailyOccurrence: dot(0, props, 'dailyOccurrence'),
+            reminder: dot(false, props, 'reminder'),
+            reminderTimes: dot('', props, 'reminderTimes'),
         }
     }
 

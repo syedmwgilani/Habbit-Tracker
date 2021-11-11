@@ -7,8 +7,8 @@ function WeekInput(props) {
         <label htmlFor="mondayId">
             <input type="checkbox"
                 id="mondayId"
-                name="weeklyOccurrence.monday"
-                checked={props.monday}
+                name="weeklyOccurrence.Monday"
+                checked={props.Monday}
                 onChange={ (event) => props.onChange(event) }
             />
             <span>Monday</span>
@@ -16,8 +16,8 @@ function WeekInput(props) {
         <label htmlFor="tuesdayId">
             <input type="checkbox"
                 id="tuesdayId"
-                name="weeklyOccurrence.tuesday"
-                checked={props.tuesday}
+                name="weeklyOccurrence.Tuesday"
+                checked={props.Tuesday}
                 onChange={ (event) => props.onChange(event) }
             />
             <span>Tuesday</span>
@@ -25,8 +25,8 @@ function WeekInput(props) {
         <label htmlFor="wednesdayId">
             <input type="checkbox"
                 id="wednesdayId"
-                name="weeklyOccurrence.wednesday"
-                checked={props.wednesday}
+                name="weeklyOccurrence.Wednesday"
+                checked={props.Wednesday}
                 onChange={ (event) => props.onChange(event) }
             />
             <span>Wednesday</span>
@@ -34,8 +34,8 @@ function WeekInput(props) {
         <label htmlFor="thursdayId">
             <input type="checkbox"
                 id="thursdayId"
-                name="weeklyOccurrence.thursday"
-                checked={props.thursday}
+                name="weeklyOccurrence.Thursday"
+                checked={props.Thursday}
                 onChange={ (event) => props.onChange(event) }
             />
             <span>Thursday</span>
@@ -43,8 +43,8 @@ function WeekInput(props) {
         <label htmlFor="fridayId">
             <input type="checkbox"
                 id="fridayId"
-                name="weeklyOccurrence.friday"
-                checked={props.friday}
+                name="weeklyOccurrence.Friday"
+                checked={props.Friday}
                 onChange={ (event) => props.onChange(event) }
             />
             <span>Friday</span>
@@ -52,8 +52,8 @@ function WeekInput(props) {
         <label htmlFor="saturdayId">
             <input type="checkbox"
                 id="saturdayId"
-                name="weeklyOccurrence.saturday"
-                checked={props.saturday}
+                name="weeklyOccurrence.Saturday"
+                checked={props.Saturday}
                 onChange={ (event) => props.onChange(event) }
             />
             <span>Saturday</span>
@@ -61,8 +61,8 @@ function WeekInput(props) {
         <label htmlFor="sundayId">
             <input type="checkbox"
                 id="sundayId"
-                name="weeklyOccurrence.sunday"
-                checked={props.sunday}
+                name="weeklyOccurrence.Sunday"
+                checked={props.Sunday}
                 onChange={ (event) => props.onChange(event) }
             />
             <span>Sunday</span>
