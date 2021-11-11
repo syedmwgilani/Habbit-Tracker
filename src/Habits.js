@@ -135,7 +135,7 @@ class Habits extends Component {
         }, this.saveHabitLocalStorage.bind(this))
     }
 
-    render(props) {
+    render() {
         const habits = {...this.state.habits}
         const habitsEleMap = Object.keys(habits).map((key, i) => {
             return (

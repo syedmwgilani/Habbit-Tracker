@@ -11,7 +11,7 @@
 6. Add routing between pages.
    Work on example with this first:
    - [Local Demo to work on](/Users/syedgilani/Documents/react-demo-app)
-   - [Easy Demo](https://www.taniarascia.com/using-react-router-spa/)
+   - [Easy Demo](https://reactrouter.com/docs/en/v6/getting-started/tutorial)
    - [Documentation](https://reactrouter.com/web/guides/quick-start)
 
 

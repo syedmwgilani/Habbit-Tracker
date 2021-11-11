@@ -1,31 +1,34 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-// import App from './App'
-// import HabitTemplate from './HabitTemplate'
-// import HabitTemplates from './HabitTemplates'
-import Habits from './Habits'
+import { render } from "react-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+import App from "./App";
+import Habits from './Habits';
+import HabitTemplate from './HabitTemplate';
+import HabitTemplates from './HabitTemplates';
 
 import './index.css'
 
-// data for HabitTemplate
-// const data = {
-//     "name": "Push ups",
-//     "numberOfDays": 32,
-//     "weeklyOccurrence": {
-//         "Monday": false,
-//         "Tuesday": false,
-//         "Wednesday": true,
-//         "Thursday": false,
-//         "Friday": true,
-//         "Saturday": false,
-//         "Sunday": false
-//     },
-//     "dailyOccurrence": 2,
-//     "reminder": true,
-//     "reminderTimes": "8:30 PM"
-// };
-
-const data = {}
-
-ReactDOM.render(<Habits {...data}/>, document.getElementById('root'))
-
+const rootElement = document.getElementById("root");
+render(
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route path="habits" element={<Habits />} />
+        <Route path="habit-template" element={<HabitTemplate />} />
+        <Route path="habit-templates" element={<HabitTemplates />} />
+        <Route
+          path="*"
+          element={
+            <main style={{ padding: "1rem" }}>
+              <p>There's nothing here!</p>
+            </main>
+          }
+        />
+      </Route>
+    </Routes>
+  </BrowserRouter>,
+  rootElement
+);

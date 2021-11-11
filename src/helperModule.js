@@ -34,4 +34,25 @@ module.exports = {
     addPrefix: function (condition, sting, prefix) {
         return condition() ? sting : prefix + sting
     },
+
+    objectIsEmpty: function (obj) {
+        return Object.keys(obj).length === 0;
+    },
+
+    // Used to traverse an object and its potential properties.
+    // If property in list is not found then defaultVal is returned.
+    // ex: dot(false, props, 'weeklyOccurrence', 'wednesday')
+    dot: function (defaultVal, ...args) {
+        let returnDefault = false;
+    
+        return args.reduce( function(acc, cur) {
+            if(returnDefault)
+                return defaultVal;
+            if(typeof(acc[cur]) === 'undefined' || acc[cur] === null) {
+                returnDefault = true;
+                return defaultVal;
+            }
+            return acc[cur];
+        })
+    },
 }

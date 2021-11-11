@@ -1,4 +1,4 @@
-function Habits(props) {
+function HabitTemplates(props) {
 
     let JSONactiveHabitTemp = localStorage.getItem('activeHabitTemplates')
     let activeHabitTemp = JSON.parse(JSONactiveHabitTemp)
@@ -30,4 +30,4 @@ function Habits(props) {
 
 }
 
-export default Habits;
+export default HabitTemplates;
