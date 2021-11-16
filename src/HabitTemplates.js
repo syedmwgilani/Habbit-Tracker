@@ -60,6 +60,7 @@ class HabitTemplates extends Component {
             (key) =>
                 <li key={key}>
                     <div>{activeHabitTemp[key].name}</div>
+                    <div>Daily Occurence: {activeHabitTemp[key].dailyOccurrence}</div>
                     <ul>
                         {
                             daysOfTheWeeks.map((day, i) =>
