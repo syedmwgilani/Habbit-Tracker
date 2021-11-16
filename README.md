@@ -13,6 +13,7 @@
    - [Local Demo to work on](/Users/syedgilani/Documents/react-demo-app)
    - [Easy Demo](https://reactrouter.com/docs/en/v6/getting-started/tutorial)
    - [Documentation](https://reactrouter.com/web/guides/quick-start)
+7. Figure out if there is a way to route github pages when on a inner route page.
 
 ## TODOs Wish list
 

@@ -9,7 +9,7 @@ class HabitTemplate extends Component {
 
         this.state = {
             name: dot('', props, 'name'),
-            numberOfDays: dot(0, props, 'numberOfDays'),
+            // numberOfDays: dot(0, props, 'numberOfDays'),
             weeklyOccurrence: {
                 Monday: dot(false, props, 'weeklyOccurrence', 'Monday'),
                 Tuesday: dot(false, props, 'weeklyOccurrence', 'Tuesday'),
@@ -73,7 +73,7 @@ class HabitTemplate extends Component {
                         />
                     </label>
                 </div>
-                <div>
+                {/* <div>
                     <label htmlFor="numberOfDaysId">
                         <span>Number of Days:</span>
                         <input type="number"
@@ -83,7 +83,7 @@ class HabitTemplate extends Component {
                             onChange={ (event) => this.handleInputChange(event) }
                         />
                     </label>
-                </div>
+                </div> */}
                 <div>
                     <WeekInput {...this.state.weeklyOccurrence} onChange={ (event) => this.handleInputChange(event) } />
                 </div>
