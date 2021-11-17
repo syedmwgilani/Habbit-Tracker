@@ -1,18 +1,14 @@
 import { Outlet, Link } from "react-router-dom";
+import './App.css'
 
 export default function App() {
   return (
-    <div>
-      <h1>Outter Template in App.js</h1>
-      <nav
-        style={{
-          borderBottom: "solid 1px",
-          paddingBottom: "1rem"
-        }}
-      >
-        <Link to="/habit-tracker/habits">Habits</Link> |{" "}
-        <Link to="/habit-tracker/habit-template">Habit Template</Link> |{" "}
-        <Link to="/habit-tracker/habit-templates">Habit Templates</Link>
+    <div className="App">
+      <h1>Habit Tracker</h1>
+      <nav>
+        <Link className="tab" to="/habit-tracker/habits">Habits</Link>
+        <Link className="tab" to="/habit-tracker/habit-template">Habit Template</Link>
+        <Link className="tab" to="/habit-tracker/habit-templates">Habit Templates</Link>
       </nav>
       <Outlet />
     </div>

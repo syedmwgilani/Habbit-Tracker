@@ -1,0 +1,18 @@
+.App {
+    padding: 10px;
+}
+.tab {
+    color: white;
+    background-color: #04AA6D;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 14px 16px;
+}
+
+.tab:hover {
+    background-color: #059862;
+}
+
+.tab:active{
+    background-color: blue;
+}
