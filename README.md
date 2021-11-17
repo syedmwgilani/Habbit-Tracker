@@ -14,6 +14,26 @@
    - [Easy Demo](https://reactrouter.com/docs/en/v6/getting-started/tutorial)
    - [Documentation](https://reactrouter.com/web/guides/quick-start)
 7. Figure out if there is a way to route github pages when on a inner route page.
+	- Check out this [issue]. (/Users/syedgilani/Documents/react-demo-app)
+
+1. Rewording: Apps.js Habit Tracker, 
+			  Habit.js  Todays Habits, Let's see what are on the habits for today.
+			  Tuesday - box around it bold with todays date
+			  Progress bar - I did it! Add a plus (+)
+
+			  Habit Template.js
+			  Add a habit
+
+			  Habit Tempaltes.js
+			  My Habits
+			  View all my Habit
+			  Show current days selected
+	Color: use old colors
+	Functionality: Save button, Show saves.
+				   Change links to [tabs](https://www.w3schools.com/howto/howto_js_tabs.asp)
+	Fonts: Title https://fonts.google.com/specimen/Abril+Fatface?query=abril#standard-styles
+		   Wording https://fonts.google.com/specimen/Quicksand?query=quick
+		   Logo Calendar or Checkmark
 
 ## TODOs Wish list
 
