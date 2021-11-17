@@ -1,5 +1,13 @@
 @import "~normalize.css/normalize.css";
 
+html {
+    font-family: 'Quicksand', sans-serif;
+}
+
+h1 {
+    font-family: 'Abril Fatface', cursive;
+}
+
 .wrapper {
     display: grid;
     grid-template-columns: minmax(1rem, 1fr) minmax(auto, 70ch) minmax(1rem, 1fr);
