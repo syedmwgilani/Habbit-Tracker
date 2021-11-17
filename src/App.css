@@ -1,18 +1,21 @@
-.App {
+.App .header {
     padding: 10px;
+    text-align: center;
 }
+
 .tab {
-    color: white;
-    background-color: #04AA6D;
-    text-decoration: none;
+    color: var(--secondary-color);
+    background-color: var(--secondary-bg-color);
     cursor: pointer;
-    padding: 14px 16px;
 }
+
+nav a.tab {
+    display: inline-block;
+    padding: 20px;
+    text-decoration: none;
+}
+
 
 .tab:hover {
-    background-color: #059862;
-}
-
-.tab:active{
-    background-color: blue;
+    background-color: var(--secondary-bg-color-hover);
 }

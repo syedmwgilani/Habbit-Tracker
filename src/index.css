@@ -1,7 +1,18 @@
 @import "~normalize.css/normalize.css";
 
+:root {
+    --main-color: black;
+    --main-bg-color: rgb(222,243,243);
+
+    --secondary-color: white;
+    --secondary-bg-color: rgb(100, 220, 220);
+    --secondary-bg-color-hover: rgb(90, 198, 198);
+}
+
 html {
     font-family: 'Quicksand', sans-serif;
+    color: var(--main-color);
+    background-color: var(--main-bg-color);
 }
 
 h1 {
@@ -14,11 +25,11 @@ h1 {
     grid-gap: 1rem;
 }
 
-.margin1 {}
+/* .margin1 {}
 
 .content {}
 
-.margin2 {}
+.margin2 {} */
 
 .bg-light-gray {
     background-color: #f1f1f1 !important;

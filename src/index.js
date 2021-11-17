@@ -2,7 +2,8 @@ import { render } from "react-dom";
 import {
   BrowserRouter,
   Routes,
-  Route
+  Route,
+  Link
 } from "react-router-dom";
 import App from "./App";
 import Habits from './Habits';
@@ -22,8 +23,9 @@ render(
         <Route
           path="*"
           element={
-            <main style={{ padding: "1rem" }}>
-              <p>There's nothing here!</p>
+            <main style={{ padding: "1rem", textAlign: "center" }}>
+              <p>Sorry you have navigated to a page that does not exist. 
+                Try going to the <Link to="/habit-tracker/habits">Habits page</Link> instead.</p>
             </main>
           }
         />
