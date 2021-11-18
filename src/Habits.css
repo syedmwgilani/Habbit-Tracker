@@ -7,14 +7,22 @@
 .progress-bar {
     cursor: pointer;
     border: 2px solid var(--primary-color);
-    border-radius: 6px;
+    border-radius: 10px;
+    position: relative;
+}
+.progress-bar:hover {
+    filter: brightness(0.85);
 }
 
 .inner-bar {
     background-color: var(--secondary-bg-color);
-    border-radius: 6px;
+    border-radius: 10px;
+    height: 40px;
 }
 
-.progress-bar:hover {
-    filter: brightness(0.85);
+.inner-bar-text {
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    left: 30px;
+    top: 10px;
 }

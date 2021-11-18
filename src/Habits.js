@@ -11,14 +11,16 @@ function InnerBar(props) {
     }
 
     return (
-        <div className="inner-bar" style={innerBar}> {props.size}% </div>
+        <div className="inner-bar" style={innerBar}>
+            <span className="inner-bar-text">{props.name} {props.size}%</span>
+        </div>
     )
 }
 
 function ProgressBar(props) {
     return (
         <div className="progress-bar" onClick={props.onClick}>
-            <InnerBar size={props.progress} />
+            <InnerBar size={props.progress} name={props.name}/>
         </div>
     )
 }
@@ -26,9 +28,8 @@ function ProgressBar(props) {
 function Habit(props) {
     return (
         <div>
-            <p>{props.name}</p>
             <ProgressBar progress={props.progress}
-                onClick={props.onClick} />
+                onClick={props.onClick} name={props.name}/>
             <p>Daily Occurence: {props.dailyOccurrence}</p>
         </div>
     )
