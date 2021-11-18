@@ -1,0 +1,20 @@
+.grid-wrapper {
+    display: grid;
+    grid-template-columns: minmax(1rem, 1fr) minmax(auto, 70ch) minmax(1rem, 1fr);
+    grid-gap: 1rem;
+}
+
+.progress-bar {
+    cursor: pointer;
+    border: 2px solid var(--primary-color);
+    border-radius: 6px;
+}
+
+.inner-bar {
+    background-color: var(--secondary-bg-color);
+    border-radius: 6px;
+}
+
+.progress-bar:hover {
+    filter: brightness(0.85);
+}

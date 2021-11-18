@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-const { addPrefix } = require('./helperModule.js');
+import './Habits.css'
 
+const { addPrefix } = require('./helperModule.js')
 
 function InnerBar(props) {
     const progPercent = (props.size <= 100 ? props.size : 100) + '%'
@@ -10,19 +11,15 @@ function InnerBar(props) {
     }
 
     return (
-        <div className="bg-blue white" style={innerBar}> {props.size}% </div>
+        <div className="inner-bar" style={innerBar}> {props.size}% </div>
     )
 }
 
 function ProgressBar(props) {
     return (
-        <div>
-            <div className="bg-light-gray">
-                <InnerBar size={props.progress} />
-            </div>
-            <br />
-            <button onClick={props.onClick}> Click Me </button>
-        </div >
+        <div className="progress-bar" onClick={props.onClick}>
+            <InnerBar size={props.progress} />
+        </div>
     )
 }
 
@@ -47,10 +44,16 @@ class Habits extends Component {
 
         const monthStr = (today.getMonth() + 1).toString()
         const dayStr = today.getDate().toString()
-        const dateString = today.getFullYear() + '_'
+        const dateKeyString = today.getFullYear() + '_'
             + addPrefix(() => monthStr.length > 1, monthStr, '0')
             + '_'
             + addPrefix(() => dayStr.length > 1, dayStr, '0')
+
+        const dateFormattedString = addPrefix(() => monthStr.length > 1, monthStr, '0')
+            + '/'
+            + addPrefix(() => dayStr.length > 1, dayStr, '0')
+            + '/'
+            + today.getFullYear().toString().substr(-2)
 
         const JSONactiveHabitTemp = localStorage.getItem('activeHabitTemplates')
         const activeHabitTemp = JSON.parse(JSONactiveHabitTemp)
@@ -58,7 +61,7 @@ class Habits extends Component {
 
         let habits = {}
         if (activeHabitTemp) {
-            const JSONhabits = localStorage.getItem('habits_' + dateString)
+            const JSONhabits = localStorage.getItem('habits_' + dateKeyString)
 
             if (JSONhabits === null) {
                 //Create new habits obj
@@ -82,13 +85,13 @@ class Habits extends Component {
 
                     let habit = oldHabitsData[key]
 
-                    if(habit && activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]) {
+                    if (habit && activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]) {
                         habit.name = activeHabitTemp[key].name
                         habit.dailyOccurrence = activeHabitTemp[key].dailyOccurrence
 
                         habits[key] = habit
                         return habits
-                    } else if(activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]){
+                    } else if (activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]) {
                         habit = {}
                         habit.name = activeHabitTemp[key].name
                         habit.dailyOccurrence = activeHabitTemp[key].dailyOccurrence
@@ -105,7 +108,8 @@ class Habits extends Component {
 
         this.state = {
             dayOfTheWeek: dayOfTheWeek,
-            dateString: dateString,
+            dateKeyString: dateKeyString,
+            dateFormattedString: dateFormattedString,
             habits: habits,
         }
         console.log('CREATED Habit state: ', this.state)
@@ -115,15 +119,15 @@ class Habits extends Component {
 
     saveHabitLocalStorage() {
         const habitsJson = JSON.stringify(this.state.habits)
-        localStorage.setItem('habits_' + this.state.dateString, habitsJson)
-        
+        localStorage.setItem('habits_' + this.state.dateKeyString, habitsJson)
+
         console.log('SAVED Habits', habitsJson);
     }
 
     incrementProgress(id) {
         console.log(`---\nCLICKED habits['${id}']`);
 
-        let habits = {...this.state.habits}
+        let habits = { ...this.state.habits }
         let habit = habits[id]
 
         const increment = 100 / habit.dailyOccurrence
@@ -136,7 +140,7 @@ class Habits extends Component {
     }
 
     render() {
-        const habits = {...this.state.habits}
+        const habits = this.state.habits
         const habitsEleMap = Object.keys(habits).map((key, i) => {
             return (
                 <li key={key}>
@@ -146,20 +150,17 @@ class Habits extends Component {
         })
 
         return (
-            <main className="wrapper">
-                <div className="margin1"></div>
-                <div className="content">
+            <main className="grid-wrapper">
+                <div className=""></div>
+                <div className="">
                     <p>
-                        {/* TODO add a Refresh to set the days */}
-                        {this.state.dayOfTheWeek}
+                        <b>Todays ({this.state.dateFormattedString}) Habits:</b> {this.state.dayOfTheWeek}
                     </p>
-                    {/* TODO if activeHabitTemp is null, then add button to the page to "Create a Habit". 
-                    Also add message no "Habits Today." */}
                     <ul>
                         {habitsEleMap}
                     </ul>
                 </div>
-                <div className="margin2"></div>
+                <div className=""></div>
             </main>
         )
     }

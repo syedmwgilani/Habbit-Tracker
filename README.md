@@ -15,6 +15,11 @@
    - [Documentation](https://reactrouter.com/web/guides/quick-start)
 7. Figure out if there is a way to route github pages when on a inner route page.
 	- Check out this [issue]. (/Users/syedgilani/Documents/react-demo-app)
+8. On Habits.js page if activeHabitTemp is null, then add button to the page to "Create a Habit". 
+	- Also add message, "No Habits Today!".
+9. Navigate back and forth in the Habits.js page.
+10. Create History.js page.
+11. Make sure Daily Occurrence is greater then 0 in HabitTemplate.js. Or else you get an Infinity percent in the Habit.js.
 
 1. Rewording: Apps.js Habit Tracker, 
 			  Habit.js  Todays Habits, Let's see what are on the habits for today.
@@ -39,6 +44,8 @@
 
 1. Create an array that hold reminders in HabitTemplate.js
 	- In Habits.js look at all the reminder times and create notifications based on those.
+2. Refresh Habits.js page when day changes
+3. Delete Habits older then a year.
 
 
 ## Limitations:

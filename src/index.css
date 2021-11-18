@@ -1,44 +1,17 @@
 @import "~normalize.css/normalize.css";
 
 :root {
-    --main-color: black;
-    --main-bg-color: rgb(222,243,243);
+    --primary-color: white;
+    --primary-bg-color: rgb(90,198,198);
+    --primary-font-family: 'Quicksand', sans-serif;
 
     --secondary-color: white;
     --secondary-bg-color: rgb(100, 220, 220);
-    --secondary-bg-color-hover: rgb(90, 198, 198);
+    --secondary-font-family: 'Abril Fatface', cursive;
 }
 
-html {
-    font-family: 'Quicksand', sans-serif;
-    color: var(--main-color);
-    background-color: var(--main-bg-color);
-}
-
-h1 {
-    font-family: 'Abril Fatface', cursive;
-}
-
-.wrapper {
-    display: grid;
-    grid-template-columns: minmax(1rem, 1fr) minmax(auto, 70ch) minmax(1rem, 1fr);
-    grid-gap: 1rem;
-}
-
-/* .margin1 {}
-
-.content {}
-
-.margin2 {} */
-
-.bg-light-gray {
-    background-color: #f1f1f1 !important;
-}
-
-.bg-blue {
-    background-color: #0074d9 !important;
-}
-
-.white {
-    color: #fff !important;
+* {
+    color: var(--primary-color);
+    background-color: var(--primary-bg-color);
+    font-family: var(--primary-font-family);
 }

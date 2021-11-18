@@ -2,6 +2,9 @@ header {
     padding: 10px;
     text-align: center;
 }
+header h1 {
+    font-family: var(--secondary-font-family);
+}
 
 nav {
     padding: 10px;
@@ -27,5 +30,5 @@ nav a.tab {
 
 
 .tab:hover {
-    background-color: var(--secondary-bg-color-hover);
+    filter: brightness(0.85);
 }
