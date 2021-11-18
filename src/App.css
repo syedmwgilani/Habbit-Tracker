@@ -1,4 +1,14 @@
-.App .header {
+header {
+    padding: 10px;
+    text-align: center;
+}
+
+nav {
+    padding: 10px;
+    text-align: center;
+}
+
+footer {
     padding: 10px;
     text-align: center;
 }
