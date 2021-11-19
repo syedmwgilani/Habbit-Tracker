@@ -1,6 +1,6 @@
 import { Component } from "react"
 import WeekInput from "./WeekInput";
-const {setNestedVal, generateUIDKey, dot} = require('./helperModule.js');
+const { setNestedVal, generateUIDKey, dot } = require('./helperModule.js');
 
 class HabitTemplate extends Component {
 
@@ -32,7 +32,7 @@ class HabitTemplate extends Component {
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
 
-        const copyState = {...this.state}
+        const copyState = { ...this.state }
         const propArr = name.split('.')
         setNestedVal(copyState, propArr, value)
         this.setState(copyState)
@@ -43,11 +43,11 @@ class HabitTemplate extends Component {
     //TODO send to helper modules
     saveStateToLocalStorage() {
         let JSONactiveHabitTemp = localStorage.getItem('activeHabitTemplates')
-        if(!JSONactiveHabitTemp) {
+        if (!JSONactiveHabitTemp) {
             JSONactiveHabitTemp = JSON.stringify({});
             localStorage.setItem('activeHabitTemplates', JSONactiveHabitTemp)
-        } 
-        
+        }
+
         let activeHabitTemp = JSON.parse(JSONactiveHabitTemp)
         const uid = generateUIDKey(activeHabitTemp)
         activeHabitTemp[uid] = (this.state)
@@ -60,20 +60,22 @@ class HabitTemplate extends Component {
     render() {
 
         return (
-            <div>
-                <h1>Habit Template</h1>
+            <main className="grid-wrapper">
+                <div></div>
                 <div>
-                    <label htmlFor="habitNameId">
-                        <span>Name:</span>
-                        <input type="text"
-                            id="habitNameId"
-                            name="name"
-                            value={this.state.name}
-                            onChange={ (event) => this.handleInputChange(event) }
-                        />
-                    </label>
-                </div>
-                {/* <div>
+                    <h1>Habit Template</h1>
+                    <div>
+                        <label htmlFor="habitNameId">
+                            <span>Name:</span>
+                            <input type="text"
+                                id="habitNameId"
+                                name="name"
+                                value={this.state.name}
+                                onChange={(event) => this.handleInputChange(event)}
+                            />
+                        </label>
+                    </div>
+                    {/* <div>
                     <label htmlFor="numberOfDaysId">
                         <span>Number of Days:</span>
                         <input type="number"
@@ -84,21 +86,21 @@ class HabitTemplate extends Component {
                         />
                     </label>
                 </div> */}
-                <div>
-                    <WeekInput {...this.state.weeklyOccurrence} onChange={ (event) => this.handleInputChange(event) } />
-                </div>
-                <div>
-                    <label htmlFor="dailyOccurrenceId">
-                        <span>Daily Occurrence:</span>
-                        <input type="number"
-                            id="dailyOccurrenceId"
-                            name="dailyOccurrence"
-                            value={this.state.dailyOccurrence}
-                            onChange={ (event) => this.handleInputChange(event) }
-                        />
-                    </label>
-                </div>
-                {/* <div>
+                    <div>
+                        <WeekInput {...this.state.weeklyOccurrence} onChange={(event) => this.handleInputChange(event)} />
+                    </div>
+                    <div>
+                        <label htmlFor="dailyOccurrenceId">
+                            <span>Daily Occurrence:</span>
+                            <input type="number"
+                                id="dailyOccurrenceId"
+                                name="dailyOccurrence"
+                                value={this.state.dailyOccurrence}
+                                onChange={(event) => this.handleInputChange(event)}
+                            />
+                        </label>
+                    </div>
+                    {/* <div>
                     <label htmlFor="reminderId">
                         <span>Reminder:</span>
                         <input type="checkbox"
@@ -120,10 +122,12 @@ class HabitTemplate extends Component {
                         />
                     </label>
                 </div> */}
-                <div>
-                    <button onClick={ event => this.saveStateToLocalStorage() }>Save</button>
+                    <div>
+                        <button onClick={event => this.saveStateToLocalStorage()}>Save</button>
+                    </div>
                 </div>
-            </div>
+                <div></div>
+            </main>
         )
     }
 }

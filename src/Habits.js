@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './Habits.css'
 
 const { addPrefix } = require('./helperModule.js')
 

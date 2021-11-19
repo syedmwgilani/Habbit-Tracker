@@ -22,7 +22,12 @@
 11. Make sure Daily Occurrence is greater then 0 in HabitTemplate.js. Or else you get an Infinity percent in the Habit.js.
 
 1. Rewording: Apps.js Habit Tracker, 
+			Change 
+			Schedule:
+				Today: Thursday (11/18/21)
+				* Add a discription in the page.
 			  Habit.js  Todays Habits, Let's see what are on the habits for today.
+			  Change Daily Occurence: show on the right side of the bar formatted 0/10.
 			  Tuesday - box around it bold with todays date
 			  Progress bar - I did it! Add a plus (+)
 
@@ -39,7 +44,7 @@
 	Fonts: Title https://fonts.google.com/specimen/Abril+Fatface?query=abril#standard-styles
 		   Wording https://fonts.google.com/specimen/Quicksand?query=quick
 		   Logo Calendar or Checkmark
-
+	Icon Change to light purple
 ## TODOs Wish list
 
 1. Create an array that hold reminders in HabitTemplate.js
