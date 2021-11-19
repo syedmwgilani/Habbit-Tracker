@@ -20,31 +20,35 @@
 9. Navigate back and forth in the Habits.js page.
 10. Create History.js page.
 11. Make sure Daily Occurrence is greater then 0 in HabitTemplate.js. Or else you get an Infinity percent in the Habit.js.
+12. Change px to rem in css
 
 1. Rewording: Apps.js Habit Tracker, 
 			Change 
-			Schedule:
-				Today: Thursday (11/18/21)
-				* Add a discription in the page.
-			  Habit.js  Todays Habits, Let's see what are on the habits for today.
-			  Change Daily Occurence: show on the right side of the bar formatted 0/10.
-			  Tuesday - box around it bold with todays date
-			  Progress bar - I did it! Add a plus (+)
+			x Schedule:
+				x Today: Thursday (11/18/21)
+				x Add a discription in the page.
+				x Description: Todays Habits, Let's see what are on the habits for today.
+				x Change Daily Occurence: show on the right side of the bar formatted 0/10.
+				Remove bullets in list items
+				Tuesday - box around it bold with todays date
+				Progress bar - I did it! Add a plus (+)
 
 			  Habit Template.js
-			  Add a habit
+			  x Add a habit
+			  Add more spacing on page
 
 			  Habit Tempaltes.js
-			  My Habits
+			  x My Habits
 			  View all my Habit
 			  Show current days selected
 	Color: use old colors
 	Functionality: Save button, Show saves.
 				   Change links to [tabs](https://www.w3schools.com/howto/howto_js_tabs.asp)
-	Fonts: Title https://fonts.google.com/specimen/Abril+Fatface?query=abril#standard-styles
+	x Fonts: Title https://fonts.google.com/specimen/Abril+Fatface?query=abril#standard-styles
 		   Wording https://fonts.google.com/specimen/Quicksand?query=quick
 		   Logo Calendar or Checkmark
-	Icon Change to light purple
+	x Icon Change to light purple
+
 ## TODOs Wish list
 
 1. Create an array that hold reminders in HabitTemplate.js

@@ -8,9 +8,9 @@ export default function App() {
       </header>
 
       <nav>
-        <Link className="tab" to="/habit-tracker/habits">Habits</Link>
-        <Link className="tab" to="/habit-tracker/habit-template">Habit Template</Link>
-        <Link className="tab" to="/habit-tracker/habit-templates">Habit Templates</Link>
+        <Link className="tab" to="/habit-tracker/habits">Schedule</Link>
+        <Link className="tab" to="/habit-tracker/habit-template">Add A Habit</Link>
+        <Link className="tab" to="/habit-tracker/habit-templates">My Habits</Link>
       </nav>
 
       <Outlet />

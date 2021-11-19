@@ -7,7 +7,7 @@
 
     --secondary-color: white;
     --secondary-bg-color: rgb(100, 220, 220);
-    --secondary-font-family: 'Abril Fatface', cursive;
+    --secondary-font-family: 'Roboto', sans-serif;
 }
 
 * {
@@ -46,9 +46,18 @@ nav a.tab {
     text-decoration: none;
 }
 
-
 .tab:hover {
     filter: brightness(0.85);
+}
+
+.pl1 {
+    padding-left: 1rem;
+}
+.pt1 {
+    padding-top: 1rem;
+} 
+.pb1 {
+    padding-bottom: 1rem;
 }
 
 input[type=text],
@@ -98,9 +107,20 @@ button:hover {
     height: 40px;
 }
 
-.inner-bar-text {
+.inner-bar-text-left {
     background-color: rgba(0, 0, 0, 0);
     position: absolute;
     left: 30px;
     top: 10px;
+}
+
+.inner-bar-text-right {
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    right: 30px;
+    top: 10px;
+}
+
+ul {
+    list-style-type:none;
 }

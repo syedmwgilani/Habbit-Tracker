@@ -2,16 +2,19 @@ import React, { Component } from 'react'
 
 const { addPrefix } = require('./helperModule.js')
 
+
 function InnerBar(props) {
-    const progPercent = (props.size <= 100 ? props.size : 100) + '%'
+    const progPercent = Math.round(props.progress / props.dailyOccurrence * 100)
+    const barSize = progPercent < 100 ? progPercent : 100
 
     const innerBar = {
-        width: progPercent,
+        width: barSize + '%',
     }
 
     return (
         <div className="inner-bar" style={innerBar}>
-            <span className="inner-bar-text">{props.name} {props.size}%</span>
+            <span className="inner-bar-text-left">{props.name}</span>
+            <span className="inner-bar-text-right">{props.progress} / {props.dailyOccurrence}</span>
         </div>
     )
 }
@@ -19,20 +22,13 @@ function InnerBar(props) {
 function ProgressBar(props) {
     return (
         <div className="progress-bar" onClick={props.onClick}>
-            <InnerBar size={props.progress} name={props.name}/>
+            <InnerBar progress={props.progress} 
+                      name={props.name}
+                      dailyOccurrence={props.dailyOccurrence} />
         </div>
     )
 }
 
-function Habit(props) {
-    return (
-        <div>
-            <ProgressBar progress={props.progress}
-                onClick={props.onClick} name={props.name}/>
-            <p>Daily Occurence: {props.dailyOccurrence}</p>
-        </div>
-    )
-}
 
 class Habits extends Component {
     constructor(props) {
@@ -130,8 +126,7 @@ class Habits extends Component {
         let habits = { ...this.state.habits }
         let habit = habits[id]
 
-        const increment = 100 / habit.dailyOccurrence
-        habit.progress = habit.progress + increment
+        habit.progress = habit.progress + 1
 
         console.log('UPDATED ', habits[id])
         this.setState({
@@ -143,24 +138,28 @@ class Habits extends Component {
         const habits = this.state.habits
         const habitsEleMap = Object.keys(habits).map((key, i) => {
             return (
-                <li key={key}>
-                    <Habit {...habits[key]} onClick={event => this.incrementProgress(key)} />
+                <li className="pt1 pb1" key={key}>
+                    <ProgressBar {...habits[key]} onClick={event => this.incrementProgress(key)} />
                 </li>
             )
         })
 
         return (
             <main className="grid-wrapper">
-                <div className=""></div>
-                <div className="">
-                    <p>
-                        <b>Todays ({this.state.dateFormattedString}) Habits:</b> {this.state.dayOfTheWeek}
+                <div></div>{/* Used for sides in grid. Needed to work properly. */}
+                <div>
+                    <h2>Schedule:</h2>
+                    <span className="pl1">
+                        <b>Today:</b> {this.state.dayOfTheWeek} ({this.state.dateFormattedString})
+                    </span>
+                    <p className="pl1">
+                        Let's see what habits you have for today!
                     </p>
                     <ul>
                         {habitsEleMap}
                     </ul>
                 </div>
-                <div className=""></div>
+                <div></div>{/* Used for sides in grid. Needed to work properly. */}
             </main>
         )
     }
