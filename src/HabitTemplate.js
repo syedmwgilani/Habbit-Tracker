@@ -61,12 +61,12 @@ class HabitTemplate extends Component {
 
         return (
             <main className="grid-wrapper">
-                <div></div>
+                <div></div>{/* Used for sides in grid. Needed to work properly. */}
                 <div>
-                    <h1>Habit Template</h1>
-                    <div>
+                    <h2>Add a Habit:</h2>
+                    <div className="pl1 pr1">
                         <label htmlFor="habitNameId">
-                            <span>Name:</span>
+                            <b>Name:</b>
                             <input type="text"
                                 id="habitNameId"
                                 name="name"
@@ -86,12 +86,12 @@ class HabitTemplate extends Component {
                         />
                     </label>
                 </div> */}
-                    <div>
+                    <div className="mt1 pl1 pr1">
                         <WeekInput {...this.state.weeklyOccurrence} onChange={(event) => this.handleInputChange(event)} />
                     </div>
-                    <div>
+                    <div className="mt1 pl1 pr1">
                         <label htmlFor="dailyOccurrenceId">
-                            <span>Daily Occurrence:</span>
+                            <b>Daily Occurrence:</b>
                             <input type="number"
                                 id="dailyOccurrenceId"
                                 name="dailyOccurrence"
@@ -122,11 +122,11 @@ class HabitTemplate extends Component {
                         />
                     </label>
                 </div> */}
-                    <div>
-                        <button onClick={event => this.saveStateToLocalStorage()}>Save</button>
+                    <div className="save-button-container">
+                        <button className="save-button" onClick={event => this.saveStateToLocalStorage()}>Save</button>
                     </div>
                 </div>
-                <div></div>
+                <div></div>{/* Used for sides in grid. Needed to work properly. */}
             </main>
         )
     }

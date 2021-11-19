@@ -53,36 +53,17 @@ nav a.tab {
 .pl1 {
     padding-left: 1rem;
 }
+.pr1 {
+    padding-right: 1rem;
+}
 .pt1 {
     padding-top: 1rem;
 } 
 .pb1 {
     padding-bottom: 1rem;
 }
-
-input[type=text],
-input[type=number] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 2px solid var(--primary-color);
-    border-radius: 10px;
-    box-sizing: border-box;
-}
-
-button {
-    width: 100%;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 10px;
-    border: 2px solid var(--primary-color);
-    cursor: pointer;
-}
-
-button:hover {
-    filter: brightness(0.85);
+.mt1 {
+    margin-top: 1rem;
 }
 
 .grid-wrapper {
@@ -123,4 +104,35 @@ button:hover {
 
 ul {
     list-style-type:none;
+}
+
+input[type=text],
+input[type=number] {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+    display: inline-block;
+    border-radius: 10px;
+    border: 2px solid var(--primary-color);
+    box-sizing: border-box;
+}
+
+.save-button-container {
+    position: relative;
+    height: 3rem;
+}
+.save-button-container:hover {
+    filter: brightness(0.85);
+}
+
+.save-button {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 10px;
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
 }
