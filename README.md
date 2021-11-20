@@ -23,6 +23,7 @@
 12. Change px to rem in css
 13. On save in HabitTemplate.js this should go back to the Habits Page
         - maybe  make the save function a call back function
+14. Add Habit Template.js add validation to page
 
 1. Rewording: Apps.js Habit Tracker, 
 			Change 
@@ -31,9 +32,8 @@
 				x Add a discription in the page.
 				x Description: Todays Habits, Let's see what are on the habits for today.
 				x Change Daily Occurence: show on the right side of the bar formatted 0/10.
-				Remove bullets in list items
-				Tuesday - box around it bold with todays date
-				Progress bar - I did it! Add a plus (+)
+				x Remove bullets in list items
+				- Progress bar - I did it! Add a plus (+)
 
 			  Habit Template.js
 			  x Add a habit
@@ -42,7 +42,8 @@
 			  Habit Tempales.js
 			  x My Habits
 			  x View all my Habit
-			  Show current days selected
+			  x Only show current days selected
+
 	Color: use old colors
 	Functionality: Save button, Show saves.
 				   Change links to [tabs](https://www.w3schools.com/howto/howto_js_tabs.asp)

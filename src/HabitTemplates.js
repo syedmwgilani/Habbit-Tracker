@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 
-function Days(props) {
-    return <div key={props.keyVal}>{props.day}: {props.vals}</div>
+function Day(props) {
+    return <div className="inline-block mr1"key={props.keyVal}>
+        {props.day}
+    </div>
 }
 
 class HabitTemplates extends Component {
@@ -58,23 +60,29 @@ class HabitTemplates extends Component {
 
         let activeHabitTempList = Object.keys(activeHabitTemp).map(
             (key) =>
-                <li key={key}>
-                    <div>{activeHabitTemp[key].name}</div>
-                    <div>Daily Occurence: {activeHabitTemp[key].dailyOccurrence}</div>
-                    <ul>
-                        {
-                            daysOfTheWeeks.map((day, i) =>
-                                <li key={i}>
-                                    <Days
-                                        day={day}
-                                        vals={activeHabitTemp[key].weeklyOccurrence[day] + ''} />
-                                </li>
-                            )
-                        }
-                    </ul>
-                    <button type="button" onClick={() => this.handleRemove(key, 'activeHabitTemp')}>
-                        Remove
-                    </button>
+                <li className="mb1" key={key}>
+                    <div className="mb1">
+                        <b>{activeHabitTemp[key].name}: </b>
+                        <span>{activeHabitTemp[key].dailyOccurrence}x</span>
+                    </div>
+                    <div className="pl1">
+                        <div className="mb1">
+                            {
+                                daysOfTheWeeks.reduce((acc, day, i) => {
+                                    if (activeHabitTemp[key].weeklyOccurrence[day])
+                                        acc.push(<Day day={day} />)
+
+                                    return acc
+                                }
+                                    , [])
+                            }
+                        </div>
+                        <div className="remove-button-container">
+                            <button className="remove-button" type="button" onClick={() => this.handleRemove(key, 'activeHabitTemp')}>
+                                Remove
+                            </button>
+                        </div>
+                    </div>
                 </li>
         )
 
