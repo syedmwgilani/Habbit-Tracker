@@ -16,7 +16,7 @@ export default function App() {
       <Outlet />
 
       <footer>
-        <span>Explore more projects made by me <a href="https://github.com/syedmwgilani" title="github" target="_blank" rel="noreferrer">Github</a>.</span>
+        <span>Explore more projects made by me on <a href="https://github.com/syedmwgilani" title="github" target="_blank" rel="noreferrer">Github</a>.</span>
       </footer>
     </div>
   );

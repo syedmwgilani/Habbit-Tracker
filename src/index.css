@@ -2,7 +2,7 @@
 
 :root {
     --primary-color: white;
-    --primary-bg-color: rgb(90,198,198);
+    --primary-bg-color: rgb(90, 198, 198);
     --primary-font-family: 'Quicksand', sans-serif;
 
     --secondary-color: white;
@@ -20,6 +20,7 @@ header {
     padding: 10px;
     text-align: center;
 }
+
 header h1 {
     font-family: var(--secondary-font-family);
 }
@@ -30,7 +31,12 @@ nav {
 }
 
 footer {
-    padding: 10px;
+    position: fixed;
+    padding: 0.5rem;
+    text-align: center;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     text-align: center;
 }
 
@@ -53,15 +59,19 @@ nav a.tab {
 .pl1 {
     padding-left: 1rem;
 }
+
 .pr1 {
     padding-right: 1rem;
 }
+
 .pt1 {
     padding-top: 1rem;
-} 
+}
+
 .pb1 {
     padding-bottom: 1rem;
 }
+
 .mt1 {
     margin-top: 1rem;
 }
@@ -78,6 +88,7 @@ nav a.tab {
     border-radius: 10px;
     position: relative;
 }
+
 .progress-bar:hover {
     filter: brightness(0.85);
 }
@@ -103,7 +114,7 @@ nav a.tab {
 }
 
 ul {
-    list-style-type:none;
+    list-style-type: none;
 }
 
 input[type=text],
@@ -117,9 +128,25 @@ input[type=number] {
     box-sizing: border-box;
 }
 
+input[type=checkbox] {
+    margin: 0.5rem;
+}
+
+.checkboxes-container {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.checkbox-container {
+    display: inline-block;
+}
+
 .save-button-container {
     position: relative;
-    height: 3rem;
+    height: 6rem;
 }
 
 .save-button {
@@ -133,6 +160,7 @@ input[type=number] {
     border: 2px solid var(--primary-color);
     cursor: pointer;
 }
+
 .save-button:hover {
     filter: brightness(0.85);
 }
