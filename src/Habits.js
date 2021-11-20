@@ -147,7 +147,7 @@ class Habits extends Component {
         return (
             <main className="grid-wrapper">
                 <div></div>{/* Used for sides in grid. Needed to work properly. */}
-                <div>
+                <div className="pb5">
                     <h2>Schedule:</h2>
                     <span className="pl1">
                         <b>Today:</b> {this.state.dayOfTheWeek} ({this.state.dateFormattedString})

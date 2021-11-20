@@ -51,7 +51,8 @@ class HabitTemplate extends Component {
         return (
             <main className="grid-wrapper">
                 <div></div>{/* Used for sides in grid. Needed to work properly. */}
-                <div>
+                
+                <div className="pb5">
                     <h2>Add a Habit:</h2>
 
                     <div className="pl1 pr1">
