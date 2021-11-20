@@ -21,6 +21,8 @@
 10. Create History.js page.
 11. Make sure Daily Occurrence is greater then 0 in HabitTemplate.js. Or else you get an Infinity percent in the Habit.js.
 12. Change px to rem in css
+13. On save in HabitTemplate.js this should go back to the Habits Page
+        - maybe  make the save function a call back function
 
 1. Rewording: Apps.js Habit Tracker, 
 			Change 
