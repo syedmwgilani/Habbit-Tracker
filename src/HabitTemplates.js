@@ -32,14 +32,14 @@ class HabitTemplates extends Component {
         localStorage.setItem('activeHabitTemplates', JSONHabitTemp)
     }
 
-    handleRemove(id, habitTempString) {        
-        let habitTemps = {...this.state[habitTempString]}
+    handleRemove(id, habitTempString) {
+        let habitTemps = { ...this.state[habitTempString] }
 
         console.log('handleRemove for ' + habitTempString, ' ID: ' + id)
         console.log('BEFORE DELETE state ', this.state[habitTempString])
         delete habitTemps[id]
 
-        if(habitTempString === 'activeHabitTemp') {
+        if (habitTempString === 'activeHabitTemp') {
             this.setState({
                 activeHabitTemp: habitTemps
             }, this.saveToLocalStorage.bind(this, 'activeHabitTemp'))
@@ -83,14 +83,22 @@ class HabitTemplates extends Component {
 
         return (
             <div className="grid-wrapper">
-                <div className="margin1"></div>
-                <div className="content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <h3>Habits Page</h3>
-                    <h4>Active Habits:</h4>
-                    <ul>
-                        {activeHabitTempList}
-                    </ul>
+                <div></div>{/* Used for sides in grid. Needed to work properly. */}
+
+                <div className="">
+                    <h2>My Habits:</h2>
+
+                    <div className="pl1">
+                        <p>
+                            View all my Habits.
+                        </p>
+
+                        <h4>Active Habits:</h4>
+                        <ul>
+                            {activeHabitTempList}
+                        </ul>
+                    </div>
+
 
                     {/* <h4>Inactive Habits:</h4>
                 <ul>
@@ -103,7 +111,8 @@ class HabitTemplates extends Component {
 
                 TODO Also add a way to delete an entry on the page. Or move it to the inactiveHabits list */}
                 </div>
-                <div className="margin2"></div>
+
+                <div></div>{/* Used for sides in grid. Needed to work properly. */}
             </div>
         )
     }

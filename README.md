@@ -37,11 +37,11 @@
 
 			  Habit Template.js
 			  x Add a habit
-			  Add more spacing on page
+			  x Add more spacing on page
 
-			  Habit Tempaltes.js
+			  Habit Tempales.js
 			  x My Habits
-			  View all my Habit
+			  x View all my Habit
 			  Show current days selected
 	Color: use old colors
 	Functionality: Save button, Show saves.

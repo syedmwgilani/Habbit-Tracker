@@ -56,20 +56,23 @@ nav a.tab {
     filter: brightness(0.85);
 }
 
+.pAll1 {
+    padding: 1rem; 
+}
 .pl1 {
     padding-left: 1rem;
 }
-
 .pr1 {
     padding-right: 1rem;
 }
-
 .pt1 {
     padding-top: 1rem;
 }
-
 .pb1 {
     padding-bottom: 1rem;
+}
+.pb5 {
+    padding-bottom: 5rem;
 }
 
 .mt1 {
