@@ -104,14 +104,36 @@ nav a.tab {
 }
 
 .progress-bar {
+    display: inline-block;
     cursor: pointer;
     border: 2px solid var(--primary-color);
     border-radius: 10px;
     position: relative;
+    width: 75%;
 }
-
 .progress-bar:hover {
     filter: brightness(0.85);
+}
+
+.decrement-button {
+    display: inline-block;
+    cursor: pointer;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    position: relative;
+    width: 10%;
+}
+.decrement-inner-button {
+    border-radius: 10px;
+    height: 40px;
+}
+.decrement-inner-button-content {
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    left: 40%;
+    top: 2px;
+    font-weight: 900;
+    font-size: xx-large;
 }
 
 .inner-bar {
@@ -124,9 +146,16 @@ nav a.tab {
     background-color: rgba(0, 0, 0, 0);
     position: absolute;
     left: 30px;
+    top: 2px;
+    font-weight: 900;
+    font-size: xx-large;
+}
+.inner-bar-text-center {
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    left: 45%;
     top: 10px;
 }
-
 .inner-bar-text-right {
     background-color: rgba(0, 0, 0, 0);
     position: absolute;

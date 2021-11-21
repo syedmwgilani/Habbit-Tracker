@@ -24,23 +24,24 @@
 13. On save in HabitTemplate.js this should go back to the Habits Page
         - maybe  make the save function a call back function
 14. Add Habit Template.js add validation to page
+15. On clicking text in progress bar and decrement button, don't allow it to highlight
+	- https://stackoverflow.com/questions/17615757/prevent-text-highlight-when-click/17615817
 
-1. Rewording: Apps.js Habit Tracker, 
-			Change 
+1. Rewording: Apps.js Habit Tracker changes
 			x Schedule:
 				x Today: Thursday (11/18/21)
 				x Add a discription in the page.
 				x Description: Todays Habits, Let's see what are on the habits for today.
 				x Change Daily Occurence: show on the right side of the bar formatted 0/10.
 				x Remove bullets in list items
-				- Progress bar - I did it! Add a plus (+)
+				x Progress bar add a plus (+)
+				- Add a star when progress bar is full
 
 			  Habit Template.js
 			  x Add a habit
 			  x Add more spacing on page
-			  - Functionality: Save button, Show saves.
-				   Change links to [tabs](https://www.w3schools.com/howto/howto_js_tabs.asp)
-
+			  x Functionality: Save button, Show saves.
+				- clear page on save
 			  Habit Tempales.js
 			  x My Habits
 			  x View all my Habit

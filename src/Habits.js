@@ -13,7 +13,8 @@ function InnerBar(props) {
 
     return (
         <div className="inner-bar" style={innerBar}>
-            <span className="inner-bar-text-left">{props.name}</span>
+            <span className="inner-bar-text-left">+</span>
+            <span className="inner-bar-text-center">{props.name}</span>
             <span className="inner-bar-text-right">{props.progress} / {props.dailyOccurrence}</span>
         </div>
     )
@@ -21,10 +22,17 @@ function InnerBar(props) {
 
 function ProgressBar(props) {
     return (
-        <div className="progress-bar" onClick={props.onClick}>
-            <InnerBar progress={props.progress} 
-                      name={props.name}
-                      dailyOccurrence={props.dailyOccurrence} />
+        <div>
+            <div className="progress-bar" onClick={props.onClick}>
+                <InnerBar progress={props.progress}
+                    name={props.name}
+                    dailyOccurrence={props.dailyOccurrence} />
+            </div>
+            <div className="decrement-button ml1" onClick={props.onClickDecrement}>
+                <div className="decrement-inner-button">
+                    <span className="decrement-inner-button-content">-</span>
+                </div>
+            </div>
         </div>
     )
 }
@@ -128,7 +136,21 @@ class Habits extends Component {
 
         habit.progress = habit.progress + 1
 
-        console.log('UPDATED ', habits[id])
+        console.log('UPDATED incremented:', habits[id])
+        this.setState({
+            habits: habits
+        }, this.saveHabitLocalStorage.bind(this))
+    }
+
+    decrementProgress(id) {
+        console.log(`---\nCLICKED habits['${id}']`);
+
+        let habits = { ...this.state.habits }
+        let habit = habits[id]
+
+        habit.progress = habit.progress - 1
+
+        console.log('UPDATED decremented:', habits[id])
         this.setState({
             habits: habits
         }, this.saveHabitLocalStorage.bind(this))
@@ -139,7 +161,9 @@ class Habits extends Component {
         const habitsEleMap = Object.keys(habits).map((key, i) => {
             return (
                 <li className="pt1 pb1" key={key}>
-                    <ProgressBar {...habits[key]} onClick={event => this.incrementProgress(key)} />
+                    <ProgressBar {...habits[key]} 
+                                 onClick={event => this.incrementProgress(key)}
+                                 onClickDecrement={event => this.decrementProgress(key) }/>
                 </li>
             )
         })
