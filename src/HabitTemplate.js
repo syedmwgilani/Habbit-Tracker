@@ -45,8 +45,15 @@ class HabitTemplate extends Component {
 
         let activeHabitTemp = JSON.parse(JSONactiveHabitTemp)
         const uid = generateUIDKey(activeHabitTemp)
-        activeHabitTemp[uid] = (this.state)
-        localStorage.setItem('activeHabitTemplates', JSON.stringify(activeHabitTemp))
+
+        //Convert dailyOccurrence from string to int
+        //then save to localStorage
+        this.setState({
+            dailyOccurrence: parseInt(this.state.dailyOccurrence)
+        }, () => {
+            activeHabitTemp[uid] = this.state
+            localStorage.setItem('activeHabitTemplates', JSON.stringify(activeHabitTemp))
+        })
     }
 
     setSaveMessages() {
