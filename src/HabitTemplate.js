@@ -9,7 +9,7 @@ class HabitTemplate extends Component {
 
         this.state = {
             name: dot('', props, 'name'),
-            dailyOccurrence: dot(0, props, 'dailyOccurrence'),
+            dailyOccurrence: dot(1, props, 'dailyOccurrence'),
             weeklyOccurrence: {
                 Monday: dot(false, props, 'weeklyOccurrence', 'Monday'),
                 Tuesday: dot(false, props, 'weeklyOccurrence', 'Tuesday'),
@@ -19,6 +19,7 @@ class HabitTemplate extends Component {
                 Saturday: dot(false, props, 'weeklyOccurrence', 'Saturday'),
                 Sunday: dot(false, props, 'weeklyOccurrence', 'Sunday')
             },
+            savingMessage: '',
         }
     }
 
@@ -34,6 +35,8 @@ class HabitTemplate extends Component {
     }
 
     saveStateToLocalStorage() {
+        this.setSaveMessages()
+
         let JSONactiveHabitTemp = localStorage.getItem('activeHabitTemplates')
         if (!JSONactiveHabitTemp) {
             JSONactiveHabitTemp = JSON.stringify({});
@@ -46,13 +49,51 @@ class HabitTemplate extends Component {
         localStorage.setItem('activeHabitTemplates', JSON.stringify(activeHabitTemp))
     }
 
+    setSaveMessages() {
+
+        this.setState({
+            savingMessage: 'Saving...'
+        }, () => {
+            setTimeout(
+                () => {
+                    this.setState({
+                        savingMessage: 'Saved!'
+                    }, () => {
+                        setTimeout(() => {
+                            console.log('Set Empty State', this.state);
+
+                            this.setEmptyState()
+                        }, 1500);
+                    })
+                }, 1500
+            )
+        })
+    }
+
+    setEmptyState() {
+        this.setState({
+            name: '',
+            dailyOccurrence: 1,
+            weeklyOccurrence: {
+                Monday: false,
+                Tuesday: false,
+                Wednesday: false,
+                Thursday: false,
+                Friday: false,
+                Saturday: false,
+                Sunday: false
+            },
+            savingMessage: ''
+        })
+    }
+
     render() {
 
         return (
-            <main className="grid-wrapper">
+            <main className="grid-wrapper" >
                 <div></div>{/* Used for sides in grid. Needed to work properly. */}
-                
-                <div className="pb5">
+
+                <div className="pb5" >
                     <h2>Add a Habit:</h2>
 
                     <div className="pl1 pr1">
@@ -85,11 +126,12 @@ class HabitTemplate extends Component {
 
                     <div className="save-button-container">
                         <button className="save-button" onClick={event => this.saveStateToLocalStorage()}>Save</button>
+                        <span className="save-message">{this.state.savingMessage}</span>
                     </div>
                 </div>
 
                 <div></div>{/* Used for sides in grid. Needed to work properly. */}
-            </main>
+            </main >
         )
     }
 }

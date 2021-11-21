@@ -181,9 +181,14 @@ input[type=checkbox] {
     border: 2px solid var(--primary-color);
     cursor: pointer;
 }
-
 .save-button:hover {
     filter: brightness(0.85);
+}
+
+.save-message {
+    position: absolute;
+    top: 75%;
+    left: 25%;
 }
 
 svg {

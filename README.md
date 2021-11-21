@@ -38,19 +38,20 @@
 			  Habit Template.js
 			  x Add a habit
 			  x Add more spacing on page
+			  - Functionality: Save button, Show saves.
+				   Change links to [tabs](https://www.w3schools.com/howto/howto_js_tabs.asp)
 
 			  Habit Tempales.js
 			  x My Habits
 			  x View all my Habit
 			  x Only show current days selected
 
-	Color: use old colors
-	Functionality: Save button, Show saves.
-				   Change links to [tabs](https://www.w3schools.com/howto/howto_js_tabs.asp)
+	x Color: use old colors
 	x Fonts: Title https://fonts.google.com/specimen/Abril+Fatface?query=abril#standard-styles
 		   Wording https://fonts.google.com/specimen/Quicksand?query=quick
 		   Logo Calendar or Checkmark
 	x Icon Change to light purple
+
 
 ## TODOs Wish list
 

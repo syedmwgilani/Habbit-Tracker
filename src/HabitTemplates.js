@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 function Day(props) {
-    return <div className="inline-block mr1"key={props.keyVal}>
+    return <div className="inline-block mr1" key={props.keyVal}>
         {props.day}
     </div>
 }
@@ -70,11 +70,10 @@ class HabitTemplates extends Component {
                             {
                                 daysOfTheWeeks.reduce((acc, day, i) => {
                                     if (activeHabitTemp[key].weeklyOccurrence[day])
-                                        acc.push(<Day day={day} />)
+                                        acc.push(<Day key={i} day={day} />)
 
                                     return acc
-                                }
-                                    , [])
+                                }, [])
                             }
                         </div>
                         <div className="remove-button-container">
