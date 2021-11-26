@@ -21,8 +21,15 @@ function InnerBar(props) {
 }
 
 function ProgressBar(props) {
+    const star = props.progress >= props.dailyOccurrence ? <span className="icon-star-full"></span> : <span></span>
+
     return (
         <div>
+            <div className="star-container">
+                <div className="star-inner-content">
+                    {star}
+                </div>
+            </div>
             <div className="progress-bar" onClick={props.onClick}>
                 <InnerBar progress={props.progress}
                     name={props.name}
@@ -161,9 +168,9 @@ class Habits extends Component {
         const habitsEleMap = Object.keys(habits).map((key, i) => {
             return (
                 <li className="pt1 pb1" key={key}>
-                    <ProgressBar {...habits[key]} 
-                                 onClick={event => this.incrementProgress(key)}
-                                 onClickDecrement={event => this.decrementProgress(key) }/>
+                    <ProgressBar {...habits[key]}
+                        onClick={event => this.incrementProgress(key)}
+                        onClickDecrement={event => this.decrementProgress(key)} />
                 </li>
             )
         })

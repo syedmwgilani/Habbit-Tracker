@@ -28,24 +28,24 @@
 	- https://stackoverflow.com/questions/17615757/prevent-text-highlight-when-click/17615817
 
 1. Rewording: Apps.js Habit Tracker changes
-			x Schedule:
-				x Today: Thursday (11/18/21)
-				x Add a discription in the page.
-				x Description: Todays Habits, Let's see what are on the habits for today.
-				x Change Daily Occurence: show on the right side of the bar formatted 0/10.
-				x Remove bullets in list items
-				x Progress bar add a plus (+)
-				- Add a star when progress bar is full
+			x Change text to "Schedule:"
+				x "Today: Thursday (11/18/21)"
+			x Add a discription in the page.
+			x Description: Todays Habits, Let's see what are on the habits for today.
+			x Change Daily Occurence: show on the right side of the bar formatted 0/10.
+			x Remove bullets in list items
+			x Progress bar add a plus (+)
+			- Add a star when progress bar is full
 
-			  Habit Template.js
-			  x Add a habit
-			  x Add more spacing on page
-			  x Functionality: Save button, Show saves.
-				- clear page on save
-			  Habit Tempales.js
-			  x My Habits
-			  x View all my Habit
-			  x Only show current days selected
+			Habit Template.js
+			x Add a habit
+			x Add more spacing on page
+			x Functionality: Save button, Show saves.
+			x clear page on save
+			Habit Tempales.js
+			x My Habits
+			x View all my Habit
+			x Only show current days selected
 
 	x Color: use old colors
 	x Fonts: Title https://fonts.google.com/specimen/Abril+Fatface?query=abril#standard-styles
