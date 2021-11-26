@@ -213,7 +213,7 @@ input[type=checkbox] {
 }
 
 .checkbox-container {
-    display: inline-block;
+    display: block;
 }
 
 .save-button-container {
