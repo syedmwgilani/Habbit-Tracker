@@ -35,14 +35,15 @@
 			x Change Daily Occurence: show on the right side of the bar formatted 0/10.
 			x Remove bullets in list items
 			x Progress bar add a plus (+)
-			- Add a star when progress bar is full
+			x Add a star when progress bar is full
 
 			Habit Template.js
 			x Add a habit
 			x Add more spacing on page
 			x Functionality: Save button, Show saves.
 			x clear page on save
-			Habit Tempales.js
+
+			Habit Templates.js
 			x My Habits
 			x View all my Habit
 			x Only show current days selected

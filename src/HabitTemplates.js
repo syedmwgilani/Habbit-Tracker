@@ -93,7 +93,7 @@ class HabitTemplates extends Component {
                 <div></div>{/* Used for sides in grid. Needed to work properly. */}
 
                 <div className="pb5">
-                    <h2>My Habits:</h2>
+                    <h2>All My Habits:</h2>
 
                     <div className="pl1">
                         <p>
