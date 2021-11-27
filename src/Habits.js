@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { Link } from 'react-router-dom'
 const { addPrefix } = require('./helperModule.js')
 
 
@@ -175,21 +175,30 @@ class Habits extends Component {
             )
         })
 
+        let message = habitsEleMap.length === 0 ?
+            (<p className="pl1">
+                No Habits {this.state.dateFormattedString} ! Maybe you might want to create a <Link to="/habit-tracker/habit-template">Habit.</Link>
+            </p>)
+            : (<p className="pl1">
+                Let's see what habits you have for {this.state.dateFormattedString} !
+            </p>)
+
+
         return (
             <main className="grid-wrapper">
                 <div></div>{/* Used for sides in grid. Needed to work properly. */}
+
                 <div className="pb5">
                     <h2>Schedule:</h2>
                     <span className="pl1">
-                        <b>Today:</b> {this.state.dayOfTheWeek} ({this.state.dateFormattedString})
+                        <b>Today:</b> {this.state.dayOfTheWeek}
                     </span>
-                    <p className="pl1">
-                        Let's see what habits you have for today!
-                    </p>
+                    {message}
                     <ul>
                         {habitsEleMap}
                     </ul>
                 </div>
+
                 <div></div>{/* Used for sides in grid. Needed to work properly. */}
             </main>
         )
