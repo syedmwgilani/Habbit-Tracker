@@ -1,4 +1,6 @@
 <script>
-    console.log('This working');
+    const path  = window.location.pathname.split('/')
+    sessionStorage.setItem('location', path[2])
+
     window.location.href='https://syedmwgilani.github.io/habit-tracker/'
 </script>
