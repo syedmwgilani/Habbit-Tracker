@@ -2,65 +2,76 @@
 
 ## TODOs
 
-1. Create a progress bar.
+x 1. Create a progress bar.
    - This should be two different shades of green
-2. Make progress bar clickable.
-3. Add notifications.
-4. Add a way to move habitTemplate from active to inactive in habit page.
-5. Add a decrement progress button
-6. Add routing between pages.
+x 2. Make progress bar clickable.
+x 5. Add a decrement progress button
+x 6. Add routing between pages.
    Work on example with this first:
    - [Local Demo to work on](/Users/syedgilani/Documents/react-demo-app)
    - [Easy Demo](https://reactrouter.com/docs/en/v6/getting-started/tutorial)
    - [Documentation](https://reactrouter.com/web/guides/quick-start)
-7. Figure out if there is a way to route github pages when on a inner route page.
+x 7. Figure out if there is a way to route github pages when on a inner route page.
 	- Check out this [issue]. (/Users/syedgilani/Documents/react-demo-app)
-8. On Habits.js page if activeHabitTemp is null, then add button to the page to "Create a Habit". 
-	- Also add message, "No Habits Today!".
-9. Navigate back and forth in the Habits.js page.
-10. Create History.js page.
-11. Make sure Daily Occurrence is greater then 0 in HabitTemplate.js. Or else you get an Infinity percent in the Habit.js.
+	- https://medium.com/swlh/how-to-host-your-angular-reactjs-vuejs-spa-on-github-pages-2d9ab102ac7b
+x 15. None of the text will be highlighted on clicking
+x 8. On Habits page if habits is empty, then add button to navigate to "Add a Habit" page. 
+	- Also add a message, "No Habits Today!".
+x 11. Make sure Daily Occurrence is greater then 0 in HabitTemplate.js. Or else you get an Infinity percent in the Habit.js.
+x 18. Change icon and remove logos
+	- [asprite color tutorial](https://www.youtube.com/watch?v=GLfliF05qAU)
+
+16. Test app in Chrome, Firefox, Safari, Chrome (mobile) and Safari (mobile)
+14. Add validation before Save, in Habit Template page
+	- and prevent button from being double clicked
+22. Change Fonts
+19. Add lines to page to differentiate header and footer from content.
+20. Add top of page button that appears on page scroll.
+21. Add Logo to page
+15. Add empty habit message to Habit Templates page.
+4. Add a way to move habitTemplate from active to inactive in habit page.
+9. Navigate back and forth through days in the Habits page.
+	- Only allow user to go back as far as a year back
+17. Click on habit template in Habit Templates page to edit it.
 12. Change px to rem in css
-13. On save in HabitTemplate.js this should go back to the Habits Page
-        - maybe  make the save function a call back function
-14. Add Habit Template.js add validation to page
-15. On clicking text in progress bar and decrement button, don't allow it to highlight
-	- https://stackoverflow.com/questions/17615757/prevent-text-highlight-when-click/17615817
+10. Create History.js page.
 
-1. Rewording: Apps.js Habit Tracker changes
-			x Change text to "Schedule:"
-				x "Today: Thursday (11/18/21)"
-			x Add a discription in the page.
-			x Description: Todays Habits, Let's see what are on the habits for today.
-			x Change Daily Occurence: show on the right side of the bar formatted 0/10.
-			x Remove bullets in list items
-			x Progress bar add a plus (+)
-			x Add a star when progress bar is full
+x Rewording: Apps.js Habit Tracker changes
+	x Change text to "Schedule:"
+		x "Today: Thursday (11/18/21)"
+	x Add a discription in the page.
+	x Description: Todays Habits, Let's see what are on the habits for today.
+	x Change Daily Occurence: show on the right side of the bar formatted 0/10.
+	x Remove bullets in list items
+	x Progress bar add a plus (+)
+	x Add a star when progress bar is full
 
-			Habit Template.js
-			x Add a habit
-			x Add more spacing on page
-			x Functionality: Save button, Show saves.
-			x clear page on save
+	Habit Template.js
+	x Add a habit
+	x Add more spacing on page
+	x Functionality: Save button, Show saves.
+	x clear page on save
 
-			Habit Templates.js
-			x My Habits
-			x View all my Habit
-			x Only show current days selected
+	Habit Templates.js
+	x My Habits
+	x View all my Habit
+	x Only show current days selected
 
-	x Color: use old colors
-	x Fonts: Title https://fonts.google.com/specimen/Abril+Fatface?query=abril#standard-styles
-		   Wording https://fonts.google.com/specimen/Quicksand?query=quick
-		   Logo Calendar or Checkmark
-	x Icon Change to light purple
+x Color: use old colors
+x Fonts: Title https://fonts.google.com/specimen/Abril+Fatface?query=abril#standard-styles
+		Wording https://fonts.google.com/specimen/Quicksand?query=quick
+		Logo Calendar or Checkmark
+x Icon Change to light purple
 
 
 ## TODOs Wish list
 
 1. Create an array that hold reminders in HabitTemplate.js
-	- In Habits.js look at all the reminder times and create notifications based on those.
+	- In Habits.js look at all the reminder times.
+	- Create notifications based on reminder times.
 2. Refresh Habits.js page when day changes
 3. Delete Habits older then a year.
+
 
 
 ## Limitations:
