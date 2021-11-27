@@ -24,9 +24,14 @@ class HabitTemplate extends Component {
     }
 
     handleInputChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
+        const target = event.target
+        let value = target.type === 'checkbox' ? target.checked : target.value
+
+        if(target.name === 'dailyOccurrence') {
+            value = value < 1 ? 1 : value
+        }
+
+        const name = target.name
 
         const copyState = { ...this.state }
         const propArr = name.split('.')
