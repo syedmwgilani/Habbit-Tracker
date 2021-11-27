@@ -16,6 +16,10 @@
     font-family: var(--primary-font-family);
 }
 
+::selection {
+    background: none;
+}
+
 header {
     padding: 10px;
     text-align: center;
