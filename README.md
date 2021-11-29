@@ -23,11 +23,12 @@ x Change icon and remove logos
 x On Save button click prevent button from being double clicked
 x Add name and weekday field validation before Save, in Habit Template page
 
-- Change Fonts
+	
 - On page scroll make header and footer transparent.
 - Add top of page button that appears on page scroll.
 - Add new Logos.
 - Add Logo to page
+- Change Fonts
 - Add empty habit message to Habit Templates page.
 - Add a way to move habitTemplate from active to inactive in habit page.
 - Navigate back and forth through days in the Habits page.
@@ -36,6 +37,7 @@ x Add name and weekday field validation before Save, in Habit Template page
 - Test app in Chrome, Firefox, Safari, Chrome (mobile) and Safari (mobile)
 - Change px to rem in css
 - Create History.js page.
+- Remove unnessary comments
 
 x Rewording: Apps.js Habit Tracker changes
 	x Change text to "Schedule:"
@@ -57,6 +59,10 @@ x Rewording: Apps.js Habit Tracker changes
 	x My Habits
 	x View all my Habit
 	x Only show current days selected
+	- Add Button to Edit Active Habits
+		- Add HabitTemplate_Edit page
+			* Both save and cancel button should lead back to Habit Templates page
+
 
 x Color: use old colors
 x Fonts: Title https://fonts.google.com/specimen/Abril+Fatface?query=abril#standard-styles

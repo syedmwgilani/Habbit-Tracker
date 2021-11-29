@@ -76,9 +76,12 @@ class HabitTemplates extends Component {
                                 }, [])
                             }
                         </div>
-                        <div className="remove-button-container">
+                        <div className="habit-button-container">
                             <button className="remove-button" type="button" onClick={() => this.handleRemove(key, 'activeHabitTemp')}>
                                 Remove
+                            </button>
+                            <button className="edit-button" type="button" onClick={() => this.handleRemove(key, 'activeHabitTemp')}>
+                                Edit
                             </button>
                         </div>
                     </div>
