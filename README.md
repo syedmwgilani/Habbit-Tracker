@@ -21,8 +21,8 @@ x Make sure Daily Occurrence is greater then 0 in HabitTemplate.js. Or else you 
 x Change icon and remove logos
 	- [asprite color tutorial](https://www.youtube.com/watch?v=GLfliF05qAU)
 x On Save button click prevent button from being double clicked
+x Add name and weekday field validation before Save, in Habit Template page
 
-- Add validation before Save, in Habit Template page
 - Change Fonts
 - On page scroll make header and footer transparent.
 - Add top of page button that appears on page scroll.

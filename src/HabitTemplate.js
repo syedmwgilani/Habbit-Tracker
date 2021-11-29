@@ -30,16 +30,16 @@ class SaveButton extends Component {
                         }, 2000)
                     })
                 }
-            , 1000)
+                , 1000)
         })
     }
 
     render() {
-        let saveButton = ( <button className="save-button" onClick={event => {
+        let saveButton = (<button className="save-button" onClick={event => {
             this.setSaveMessages()
             this.props.onClick(event)
-        }}>Save</button> )
-        if(this.state.savingMessage === 'Saving...'){
+        }}>Save</button>)
+        if (this.state.savingMessage === 'Saving...') {
             saveButton = (<button className="save-button save-button-saving">Save</button>)
         }
         return (
@@ -125,6 +125,19 @@ class HabitTemplate extends Component {
     }
 
     render() {
+        let showSaveButton = (
+            <div className="validation-text-container">
+                <div className="validation-text">Please Enter a Habit <b>Name</b> and select at least <b>One</b> Weekday.</div>
+            </div>
+        )
+        console.log(this.state.weeklyOccurrence)
+        const weekdayChecked = Object.values(this.state.weeklyOccurrence).includes(true)
+        if (this.state.name !== '' && weekdayChecked) {
+            showSaveButton = (
+                <SaveButton onClick={event => this.saveStateToLocalStorage()}
+                        endOfSaveFunction={event => this.setEmptyState()} />
+            )
+        }
 
         return (
             <main className="grid-wrapper" >
@@ -160,9 +173,8 @@ class HabitTemplate extends Component {
                             />
                         </label>
                     </div>
-
-                    <SaveButton onClick={event => this.saveStateToLocalStorage()}
-                                endOfSaveFunction={event => this.setEmptyState()}  />
+                    
+                    {showSaveButton}
                 </div>
 
                 <div></div>{/* Used for sides in grid. Needed to work properly. */}

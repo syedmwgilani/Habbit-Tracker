@@ -8,6 +8,8 @@
     --secondary-color: white;
     --secondary-bg-color: rgb(100, 220, 220);
     --secondary-font-family: 'Roboto', sans-serif;
+
+    --warning-bg-color: rgb(198, 90, 90)
 }
 
 * {
@@ -218,6 +220,22 @@ input[type=checkbox] {
 
 .checkbox-container {
     display: block;
+}
+
+.validation-text-container {
+    position: relative;
+    height: 6rem;
+}
+.validation-text {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    padding: 0.5rem 1rem;
+    background-color: var(--warning-bg-color);
+}
+.validation-text b {
+    background-color: var(--warning-bg-color);
 }
 
 .save-button-container {
