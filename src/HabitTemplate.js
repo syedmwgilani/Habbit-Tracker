@@ -20,17 +20,8 @@ class SaveButton extends Component {
             setTimeout(
                 () => {
                     this.props.endOfSaveFunction()
-                    this.setState({
-                        savingMessage: 'Saved!'
-                    }, () => {
-                        setTimeout(() => {
-                            this.setState({
-                                savingMessage: ''
-                            })
-                        }, 2000)
-                    })
                 }
-                , 1000)
+            , 1000)
         })
     }
 
@@ -130,7 +121,6 @@ class HabitTemplate extends Component {
                 <div className="validation-text">Please Enter a Habit <b>Name</b> and select at least <b>One</b> Weekday.</div>
             </div>
         )
-        console.log(this.state.weeklyOccurrence)
         const weekdayChecked = Object.values(this.state.weeklyOccurrence).includes(true)
         if (this.state.name !== '' && weekdayChecked) {
             showSaveButton = (
