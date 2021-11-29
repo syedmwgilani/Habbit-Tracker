@@ -20,9 +20,9 @@ x On Habits page if habits is empty, then add button to navigate to "Add a Habit
 x Make sure Daily Occurrence is greater then 0 in HabitTemplate.js. Or else you get an Infinity percent in the Habit.js.
 x Change icon and remove logos
 	- [asprite color tutorial](https://www.youtube.com/watch?v=GLfliF05qAU)
+x On Save button click prevent button from being double clicked
 
 - Add validation before Save, in Habit Template page
-	- and prevent button from being double clicked
 - Change Fonts
 - On page scroll make header and footer transparent.
 - Add top of page button that appears on page scroll.

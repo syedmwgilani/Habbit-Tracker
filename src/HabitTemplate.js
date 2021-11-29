@@ -30,17 +30,21 @@ class SaveButton extends Component {
                         }, 2000)
                     })
                 }
-            , 500)
+            , 1000)
         })
     }
 
     render() {
+        let saveButton = ( <button className="save-button" onClick={event => {
+            this.setSaveMessages()
+            this.props.onClick(event)
+        }}>Save</button> )
+        if(this.state.savingMessage === 'Saving...'){
+            saveButton = (<button className="save-button save-button-saving">Save</button>)
+        }
         return (
             <div className="save-button-container">
-                <button className="save-button" onClick={event => {
-                    this.setSaveMessages()
-                    this.props.onClick(event)
-                }}>Save</button>
+                {saveButton}
                 <span className="save-message">{this.state.savingMessage}</span>
             </div>
         )

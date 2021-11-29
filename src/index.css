@@ -237,6 +237,10 @@ input[type=checkbox] {
     cursor: pointer;
 }
 
+.save-button-saving {
+    filter: brightness(0.85);
+}
+
 .save-button:hover {
     filter: brightness(0.85);
 }
