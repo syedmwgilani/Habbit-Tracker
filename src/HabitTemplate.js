@@ -2,6 +2,51 @@ import { Component } from "react"
 import WeekInput from "./WeekInput";
 const { setNestedVal, generateUIDKey, dot } = require('./helperModule.js');
 
+class SaveButton extends Component {
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            savingMessage: '',
+        }
+    }
+
+    setSaveMessages() {
+
+        this.setState({
+            savingMessage: 'Saving...'
+        }, () => {
+            setTimeout(
+                () => {
+                    this.props.endOfSaveFunction()
+                    this.setState({
+                        savingMessage: 'Saved!'
+                    }, () => {
+                        setTimeout(() => {
+                            this.setState({
+                                savingMessage: ''
+                            })
+                        }, 2000)
+                    })
+                }
+            , 500)
+        })
+    }
+
+    render() {
+        return (
+            <div className="save-button-container">
+                <button className="save-button" onClick={event => {
+                    this.setSaveMessages()
+                    this.props.onClick(event)
+                }}>Save</button>
+                <span className="save-message">{this.state.savingMessage}</span>
+            </div>
+        )
+    }
+}
+
 class HabitTemplate extends Component {
 
     constructor(props) {
@@ -19,7 +64,6 @@ class HabitTemplate extends Component {
                 Saturday: dot(false, props, 'weeklyOccurrence', 'Saturday'),
                 Sunday: dot(false, props, 'weeklyOccurrence', 'Sunday')
             },
-            savingMessage: '',
         }
     }
 
@@ -27,7 +71,7 @@ class HabitTemplate extends Component {
         const target = event.target
         let value = target.type === 'checkbox' ? target.checked : target.value
 
-        if(target.name === 'dailyOccurrence') {
+        if (target.name === 'dailyOccurrence') {
             value = value < 1 ? 1 : value
         }
 
@@ -40,8 +84,6 @@ class HabitTemplate extends Component {
     }
 
     saveStateToLocalStorage() {
-        this.setSaveMessages()
-
         let JSONactiveHabitTemp = localStorage.getItem('activeHabitTemplates')
         if (!JSONactiveHabitTemp) {
             JSONactiveHabitTemp = JSON.stringify({});
@@ -61,28 +103,8 @@ class HabitTemplate extends Component {
         })
     }
 
-    setSaveMessages() {
-
-        this.setState({
-            savingMessage: 'Saving...'
-        }, () => {
-            setTimeout(
-                () => {
-                    this.setState({
-                        savingMessage: 'Saved!'
-                    }, () => {
-                        setTimeout(() => {
-                            console.log('Set Empty State', this.state);
-
-                            this.setEmptyState()
-                        }, 1500);
-                    })
-                }, 1500
-            )
-        })
-    }
-
     setEmptyState() {
+        console.log('BEFORE Set Empty State: ', this.state);
         this.setState({
             name: '',
             dailyOccurrence: 1,
@@ -95,7 +117,6 @@ class HabitTemplate extends Component {
                 Saturday: false,
                 Sunday: false
             },
-            savingMessage: ''
         })
     }
 
@@ -136,10 +157,8 @@ class HabitTemplate extends Component {
                         </label>
                     </div>
 
-                    <div className="save-button-container">
-                        <button className="save-button" onClick={event => this.saveStateToLocalStorage()}>Save</button>
-                        <span className="save-message">{this.state.savingMessage}</span>
-                    </div>
+                    <SaveButton onClick={event => this.saveStateToLocalStorage()}
+                                endOfSaveFunction={event => this.setEmptyState()}  />
                 </div>
 
                 <div></div>{/* Used for sides in grid. Needed to work properly. */}

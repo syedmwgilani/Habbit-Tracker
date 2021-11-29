@@ -2,39 +2,40 @@
 
 ## TODOs
 
-x 1. Create a progress bar.
+x Create a progress bar.
    - This should be two different shades of green
-x 2. Make progress bar clickable.
-x 5. Add a decrement progress button
-x 6. Add routing between pages.
+x Make progress bar clickable.
+x Add a decrement progress button
+x Add routing between pages.
    Work on example with this first:
    - [Local Demo to work on](/Users/syedgilani/Documents/react-demo-app)
    - [Easy Demo](https://reactrouter.com/docs/en/v6/getting-started/tutorial)
    - [Documentation](https://reactrouter.com/web/guides/quick-start)
-x 7. Figure out if there is a way to route github pages when on a inner route page.
+x Figure out if there is a way to route github pages when on a inner route page.
 	- Check out this [issue]. (/Users/syedgilani/Documents/react-demo-app)
 	- https://medium.com/swlh/how-to-host-your-angular-reactjs-vuejs-spa-on-github-pages-2d9ab102ac7b
-x 15. None of the text will be highlighted on clicking
-x 8. On Habits page if habits is empty, then add button to navigate to "Add a Habit" page. 
+x None of the text will be highlighted on clicking
+x On Habits page if habits is empty, then add button to navigate to "Add a Habit" page. 
 	- Also add a message, "No Habits Today!".
-x 11. Make sure Daily Occurrence is greater then 0 in HabitTemplate.js. Or else you get an Infinity percent in the Habit.js.
-x 18. Change icon and remove logos
+x Make sure Daily Occurrence is greater then 0 in HabitTemplate.js. Or else you get an Infinity percent in the Habit.js.
+x Change icon and remove logos
 	- [asprite color tutorial](https://www.youtube.com/watch?v=GLfliF05qAU)
 
-16. Test app in Chrome, Firefox, Safari, Chrome (mobile) and Safari (mobile)
-14. Add validation before Save, in Habit Template page
+- Add validation before Save, in Habit Template page
 	- and prevent button from being double clicked
-22. Change Fonts
-19. Add lines to page to differentiate header and footer from content.
-20. Add top of page button that appears on page scroll.
-21. Add Logo to page
-15. Add empty habit message to Habit Templates page.
-4. Add a way to move habitTemplate from active to inactive in habit page.
-9. Navigate back and forth through days in the Habits page.
+- Change Fonts
+- On page scroll make header and footer transparent.
+- Add top of page button that appears on page scroll.
+- Add new Logos.
+- Add Logo to page
+- Add empty habit message to Habit Templates page.
+- Add a way to move habitTemplate from active to inactive in habit page.
+- Navigate back and forth through days in the Habits page.
 	- Only allow user to go back as far as a year back
-17. Click on habit template in Habit Templates page to edit it.
-12. Change px to rem in css
-10. Create History.js page.
+- Click on habit template in Habit Templates page to edit it.
+- Test app in Chrome, Firefox, Safari, Chrome (mobile) and Safari (mobile)
+- Change px to rem in css
+- Create History.js page.
 
 x Rewording: Apps.js Habit Tracker changes
 	x Change text to "Schedule:"
