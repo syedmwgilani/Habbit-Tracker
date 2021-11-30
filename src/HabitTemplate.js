@@ -85,7 +85,9 @@ class HabitTemplate extends Component {
         const weekdayChecked = Object.values(this.state.weeklyOccurrence).includes(true)
         if (this.state.name !== '' && weekdayChecked) {
             showSaveButton = (
-                <SaveButton onClick={event => this.saveStateToLocalStorage()}
+                <SaveButton className="save-button save-button-add"
+                            classNameSaving="save-button save-button-add save-button-saving"
+                            onClick={event => this.saveStateToLocalStorage()}
                             endOfSaveFunction={event => this.setEmptyState()} />
             )
         }
@@ -124,8 +126,10 @@ class HabitTemplate extends Component {
                             />
                         </label>
                     </div>
-                    
-                    {showSaveButton}
+
+                    <div className="button-container">
+                        {showSaveButton}
+                    </div>
                 </div>
 
                 <div></div>{/* Used for sides in grid. Needed to work properly. */}

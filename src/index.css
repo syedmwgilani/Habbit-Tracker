@@ -238,7 +238,7 @@ input[type=checkbox] {
     background-color: var(--warning-bg-color);
 }
 
-.save-button-container {
+.button-container {
     position: relative;
     height: 6rem;
 }
@@ -246,20 +246,40 @@ input[type=checkbox] {
 .save-button {
     position: absolute;
     top: 25%;
-    left: 25%;
-    width: 50%;
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 10px;
     border: 2px solid var(--primary-color);
     cursor: pointer;
 }
-
+.save-button:hover {
+    filter: brightness(0.85);
+}
 .save-button-saving {
     filter: brightness(0.85);
 }
 
-.save-button:hover {
+.save-button-add {
+    left: 25%;
+    width: 50%;
+}
+.save-button-edit {
+    right: 20%;
+    width: 25%;
+}
+
+.cancel-button {
+    position: absolute;
+    top: 25%;
+    left: 20%;
+    width: 25%;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 10px;
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
+}
+.cancel-button:hover {
     filter: brightness(0.85);
 }
 

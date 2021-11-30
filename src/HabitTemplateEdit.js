@@ -4,12 +4,24 @@ import WeekInput from "./WeekInput";
 import SaveButton from "./SaveButton";
 const { setNestedVal, dot } = require('./helperModule.js');
 
-function NavigateSaveButton(props) {
+function NavigatationSaveButton(props) {
     const navigate = useNavigate()
 
     return (
-        <SaveButton onClick={event => props.onClick()}
-            endOfSaveFunction={event => navigate("/habit-tracker/habit-templates")} />
+        <SaveButton className="save-button save-button-edit"
+                    classNameSaving="save-button save-button-edit save-button-saving"
+                    onClick={event => props.onClick()}
+                    endOfSaveFunction={event => navigate("/habit-tracker/habit-templates")} />
+    );
+}
+
+function NavigatationCancelButton(props) {
+    const navigate = useNavigate()
+
+    return (
+        <button className="cancel-button" onClick={event => navigate("/habit-tracker/habit-templates")}>
+            Cancel
+        </button>
     );
 }
 
@@ -81,13 +93,13 @@ class HabitTemplateEdit extends Component {
         const weekdayChecked = Object.values(this.state.weeklyOccurrence).includes(true)
         if (this.state.name !== '' && weekdayChecked) {
             showSaveButton = (
-                <NavigateSaveButton onClick={event => this.saveStateToLocalStorage()} />
+                <NavigatationSaveButton onClick={event => this.saveStateToLocalStorage()} />
             )
         }
 
         //if the habitId does not exist show message instead of rendering rest of page
         let content = <span>This Habit does not exist. Maybe you might want to go to this page instead</span>
-        
+
         if (this.state.name !== '') {
             content = (
                 <main className="grid-wrapper" >
@@ -123,8 +135,10 @@ class HabitTemplateEdit extends Component {
                                 />
                             </label>
                         </div>
-
-                        {showSaveButton}
+                        <div className="button-container">
+                            <NavigatationCancelButton />
+                            {showSaveButton}
+                        </div>
                     </div>
 
                     <div></div>{/* Used for sides in grid. Needed to work properly. */}
