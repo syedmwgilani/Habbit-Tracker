@@ -29,7 +29,6 @@ x Add name and weekday field validation before Save, in Habit Template page
 - Add new Logos.
 - Add Logo to page
 - Change Fonts
-- Add empty habit message to Habit Templates page.
 - Add a way to move habitTemplate from active to inactive in habit page.
 - Navigate back and forth through days in the Habits page.
 	- Only allow user to go back as far as a year back
@@ -62,7 +61,8 @@ x Rewording: Apps.js Habit Tracker changes
 	x Add Button to Edit Active Habits
 		x Add HabitTemplate_Edit page
 	x Save button should lead back to Habit Templates page
-	- Cancel button should lead back to Habit Templates page
+	x Cancel button should lead back to Habit Templates page
+	x Added empty habit message to and fixed empty activeHabitTemp bug.
 
 
 x Color: use old colors

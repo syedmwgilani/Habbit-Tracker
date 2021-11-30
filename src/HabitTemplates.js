@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function EditButton(props) {
     const navigate = useNavigate()
@@ -38,7 +38,7 @@ class HabitTemplates extends Component {
         // let inactiveHabitTemp = JSON.parse(JSONinactiveHabitTemp)
 
         this.state = {
-            activeHabitTemp: activeHabitTemp,
+            activeHabitTemp: activeHabitTemp ?? []
             // inactiveHabitTemp: inactiveHabitTemp  
         }
         console.log('CREATED HabitTemplates state: ', this.state);
@@ -74,6 +74,15 @@ class HabitTemplates extends Component {
         // const inactiveHabitTemp = this.state.inactiveHabitTemp
         const daysOfTheWeeks = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
+        let message = activeHabitTemp.length === 0 ?
+            (<p className="">
+                You have no Habits! Maybe you might want to create a <Link to="/habit-tracker/habit-template">Habit.</Link>
+            </p>)
+            :
+            (<p className="">
+                View all my Habits.
+            </p>)
+
         let activeHabitTempList = Object.keys(activeHabitTemp).map(
             (key) =>
                 <li className="mb1" key={key}>
@@ -96,7 +105,7 @@ class HabitTemplates extends Component {
                             <button className="remove-button" type="button" onClick={() => this.handleRemove(key, 'activeHabitTemp')}>
                                 Remove
                             </button>
-                            <EditButton id={key}/>
+                            <EditButton id={key} />
                         </div>
                     </div>
                 </li>
@@ -113,11 +122,8 @@ class HabitTemplates extends Component {
                     <h2>All My Habits:</h2>
 
                     <div className="pl1">
-                        <p>
-                            View all my Habits.
-                        </p>
-
-                        <h4>Active Habits:</h4>
+                        {message}
+                        {/* <h4>Habits:</h4> */}
                         <ul>
                             {activeHabitTempList}
                         </ul>
