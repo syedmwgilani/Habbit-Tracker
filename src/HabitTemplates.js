@@ -1,4 +1,20 @@
 import React, { Component } from 'react'
+import { useNavigate } from "react-router-dom";
+
+function EditButton(props) {
+    const navigate = useNavigate()
+
+    return (
+        <button className="edit-button"
+            type="button"
+            id={props.id}
+            onClick={() => {
+                navigate("/habit-tracker/habit-template-edit-" + props.id)
+            }} >
+            Edit
+        </button>
+    )
+}
 
 function Day(props) {
     return <div className="inline-block mr1" key={props.keyVal}>
@@ -80,9 +96,7 @@ class HabitTemplates extends Component {
                             <button className="remove-button" type="button" onClick={() => this.handleRemove(key, 'activeHabitTemp')}>
                                 Remove
                             </button>
-                            <button className="edit-button" type="button" onClick={() => this.handleRemove(key, 'activeHabitTemp')}>
-                                Edit
-                            </button>
+                            <EditButton id={key}/>
                         </div>
                     </div>
                 </li>

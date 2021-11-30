@@ -59,9 +59,10 @@ x Rewording: Apps.js Habit Tracker changes
 	x My Habits
 	x View all my Habit
 	x Only show current days selected
-	- Add Button to Edit Active Habits
-		- Add HabitTemplate_Edit page
-			* Both save and cancel button should lead back to Habit Templates page
+	x Add Button to Edit Active Habits
+		x Add HabitTemplate_Edit page
+	x Save button should lead back to Habit Templates page
+	- Cancel button should lead back to Habit Templates page
 
 
 x Color: use old colors

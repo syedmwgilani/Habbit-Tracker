@@ -1,46 +1,7 @@
-import { Component } from "react"
+import { Component } from "react";
+import SaveButton from "./SaveButton";
 import WeekInput from "./WeekInput";
-const { setNestedVal, generateUIDKey, dot } = require('./helperModule.js');
-
-class SaveButton extends Component {
-
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            savingMessage: '',
-        }
-    }
-
-    setSaveMessages() {
-
-        this.setState({
-            savingMessage: 'Saving...'
-        }, () => {
-            setTimeout(
-                () => {
-                    this.props.endOfSaveFunction()
-                }
-            , 1000)
-        })
-    }
-
-    render() {
-        let saveButton = (<button className="save-button" onClick={event => {
-            this.setSaveMessages()
-            this.props.onClick(event)
-        }}>Save</button>)
-        if (this.state.savingMessage === 'Saving...') {
-            saveButton = (<button className="save-button save-button-saving">Save</button>)
-        }
-        return (
-            <div className="save-button-container">
-                {saveButton}
-                <span className="save-message">{this.state.savingMessage}</span>
-            </div>
-        )
-    }
-}
+const { setNestedVal, generateUIDKey } = require('./helperModule.js');
 
 class HabitTemplate extends Component {
 
@@ -48,16 +9,16 @@ class HabitTemplate extends Component {
         super(props)
 
         this.state = {
-            name: dot('', props, 'name'),
-            dailyOccurrence: dot(1, props, 'dailyOccurrence'),
+            name: '',
+            dailyOccurrence: 1,
             weeklyOccurrence: {
-                Monday: dot(false, props, 'weeklyOccurrence', 'Monday'),
-                Tuesday: dot(false, props, 'weeklyOccurrence', 'Tuesday'),
-                Wednesday: dot(false, props, 'weeklyOccurrence', 'Wednesday'),
-                Thursday: dot(false, props, 'weeklyOccurrence', 'Thursday'),
-                Friday: dot(false, props, 'weeklyOccurrence', 'Friday'),
-                Saturday: dot(false, props, 'weeklyOccurrence', 'Saturday'),
-                Sunday: dot(false, props, 'weeklyOccurrence', 'Sunday')
+                Monday: false,
+                Tuesday: false,
+                Wednesday: false,
+                Thursday: false,
+                Friday: false,
+                Saturday: false,
+                Sunday: false
             },
         }
     }
@@ -125,7 +86,7 @@ class HabitTemplate extends Component {
         if (this.state.name !== '' && weekdayChecked) {
             showSaveButton = (
                 <SaveButton onClick={event => this.saveStateToLocalStorage()}
-                        endOfSaveFunction={event => this.setEmptyState()} />
+                            endOfSaveFunction={event => this.setEmptyState()} />
             )
         }
 
