@@ -23,9 +23,6 @@ x Change icon and remove logos
 x On Save button click prevent button from being double clicked
 x Add name and weekday field validation before Save, in Habit Template page
 
-	
-- On page scroll make header and footer transparent.
-- Add top of page button that appears on page scroll.
 - Add new Logos.
 - Add Logo to page
 - Change Fonts
@@ -38,8 +35,10 @@ x Add name and weekday field validation before Save, in Habit Template page
 - Create History.js page.
 - Remove unnessary comments
 
-x Rewording: Apps.js Habit Tracker changes
-	x Change text to "Schedule:"
+Habit Tracker Changes:
+
+	Apps
+	x Rewording: Change text to "Schedule:"
 		x "Today: Thursday (11/18/21)"
 	x Add a discription in the page.
 	x Description: Todays Habits, Let's see what are on the habits for today.
@@ -47,14 +46,24 @@ x Rewording: Apps.js Habit Tracker changes
 	x Remove bullets in list items
 	x Progress bar add a plus (+)
 	x Add a star when progress bar is full
+	- Add logo
+	- Change color
+	- Make star yellow star
+	- On page scroll make nav in header and footer transparent.
+	- Add top of page button that appears on page scroll.
+		* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_scroll_to_top
+		* https://stackoverflow.com/questions/1144805/scroll-to-the-top-of-the-page-using-javascript
 
-	Habit Template.js
+	Habit Template
 	x Add a habit
 	x Add more spacing on page
 	x Functionality: Save button, Show saves.
 	x clear page on save
 
-	Habit Templates.js
+	Habit Template Edit
+	- Fix bug where on name delete the page changes to a non-existing page
+
+	Habit Templates
 	x My Habits
 	x View all my Habit
 	x Only show current days selected

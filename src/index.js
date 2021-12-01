@@ -39,9 +39,13 @@ render(
         <Route
           path="*"
           element={
-            <main style={{ padding: "1rem", textAlign: "center" }}>
-              <p>Sorry you have navigated to a page that does not exist.
-                Try going to the <Link to="/habit-tracker/habits">Habits page</Link> instead.</p>
+            <main className="grid-wrapper">
+              <div></div>{/* Used for sides in grid. Needed to work properly. */}
+              <p>
+                Sorry you have navigated to a page that does not exist.
+                Try going to the <Link to="/habit-tracker/habits">Schedule</Link> page instead.
+              </p>
+              <div></div>{/* Used for sides in grid. Needed to work properly. */}
             </main>
           }
         />
