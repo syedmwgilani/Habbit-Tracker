@@ -1,5 +1,6 @@
 import { Component } from "react"
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 import WeekInput from "./WeekInput";
 import SaveButton from "./SaveButton";
 const { setNestedVal, dot } = require('./helperModule.js');
@@ -9,9 +10,9 @@ function NavigatationSaveButton(props) {
 
     return (
         <SaveButton className="save-button save-button-edit"
-                    classNameSaving="save-button save-button-edit save-button-saving"
-                    onClick={event => props.onClick()}
-                    endOfSaveFunction={event => navigate("/habit-tracker/habit-templates")} />
+            classNameSaving="save-button save-button-edit save-button-saving"
+            onClick={event => props.onClick()}
+            endOfSaveFunction={event => navigate("/habit-tracker/habit-templates")} />
     );
 }
 
@@ -39,6 +40,7 @@ class HabitTemplateEdit extends Component {
 
         this.state = {
             habitId: habitId,
+            habitExists: habit ? true : false,
             name: dot('', habit, 'name'),
             dailyOccurrence: dot(1, habit, 'dailyOccurrence'),
             weeklyOccurrence: {
@@ -84,6 +86,7 @@ class HabitTemplateEdit extends Component {
     }
 
     render() {
+
         let showSaveButton = (
             <div className="validation-text-container">
                 <div className="validation-text">Please Enter a Habit <b>Name</b> and select at least <b>One</b> Weekday.</div>
@@ -98,55 +101,55 @@ class HabitTemplateEdit extends Component {
         }
 
         //if the habitId does not exist show message instead of rendering rest of page
-        let content = <span>This Habit does not exist. Maybe you might want to go to this page instead</span>
-
-        if (this.state.name !== '') {
+        let content = (<p>This Habit does not exist. You might want to go to the <Link to="/habit-tracker/habit-templates">All My Habits</Link> page instead</p>)
+        
+        if (this.state.habitExists) {
             content = (
-                <main className="grid-wrapper" >
-                    <div></div>{/* Used for sides in grid. Needed to work properly. */}
+                <div className="pb5" >
+                    <h2>Edit Habit:</h2>
 
-                    <div className="pb5" >
-                        <h2>Edit Habit:</h2>
-
-                        <div className="pl1 pr1">
-                            <label htmlFor="habitNameId">
-                                <b>Name:</b>
-                                <input type="text"
-                                    id="habitNameId"
-                                    name="name"
-                                    value={this.state.name}
-                                    onChange={(event) => this.handleInputChange(event)}
-                                />
-                            </label>
-                        </div>
-
-                        <div className="mt1 pl1 pr1">
-                            <WeekInput {...this.state.weeklyOccurrence} onChange={(event) => this.handleInputChange(event)} />
-                        </div>
-
-                        <div className="mt1 pl1 pr1">
-                            <label htmlFor="dailyOccurrenceId">
-                                <b>Daily Occurrence:</b>
-                                <input type="number"
-                                    id="dailyOccurrenceId"
-                                    name="dailyOccurrence"
-                                    value={this.state.dailyOccurrence}
-                                    onChange={(event) => this.handleInputChange(event)}
-                                />
-                            </label>
-                        </div>
-                        <div className="button-container">
-                            <NavigatationCancelButton />
-                            {showSaveButton}
-                        </div>
+                    <div className="pl1 pr1">
+                        <label htmlFor="habitNameId">
+                            <b>Name:</b>
+                            <input type="text"
+                                id="habitNameId"
+                                name="name"
+                                value={this.state.name}
+                                onChange={(event) => this.handleInputChange(event)}
+                            />
+                        </label>
                     </div>
 
-                    <div></div>{/* Used for sides in grid. Needed to work properly. */}
-                </main >
+                    <div className="mt1 pl1 pr1">
+                        <WeekInput {...this.state.weeklyOccurrence} onChange={(event) => this.handleInputChange(event)} />
+                    </div>
+
+                    <div className="mt1 pl1 pr1">
+                        <label htmlFor="dailyOccurrenceId">
+                            <b>Daily Occurrence:</b>
+                            <input type="number"
+                                id="dailyOccurrenceId"
+                                name="dailyOccurrence"
+                                value={this.state.dailyOccurrence}
+                                onChange={(event) => this.handleInputChange(event)}
+                            />
+                        </label>
+                    </div>
+                    <div className="button-container">
+                        <NavigatationCancelButton />
+                        {showSaveButton}
+                    </div>
+                </div>
             )
         }
 
-        return content
+        return (
+            <main className="grid-wrapper" >
+                <div></div>{/* Used for sides in grid. Needed to work properly. */}
+                {content}
+                <div></div>{/* Used for sides in grid. Needed to work properly. */}
+            </main >
+        )
     }
 }
 

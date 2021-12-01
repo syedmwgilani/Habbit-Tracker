@@ -44,7 +44,10 @@ module.exports = {
     // ex: dot(false, props, 'weeklyOccurrence', 'wednesday')
     dot: function (defaultVal, ...args) {
         let returnDefault = false;
-    
+        
+        if(typeof(args[0]) !== 'object')
+            return defaultVal
+
         return args.reduce( function(acc, cur) {
             if(returnDefault)
                 return defaultVal;
