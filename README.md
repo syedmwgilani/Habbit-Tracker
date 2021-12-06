@@ -23,8 +23,6 @@ x Change icon and remove logos
 x On Save button click prevent button from being double clicked
 x Add name and weekday field validation before Save, in Habit Template page
 
-- Add new Logos.
-- Add Logo to page
 - Change Fonts
 - Add a way to move habitTemplate from active to inactive in habit page.
 - Navigate back and forth through days in the Habits page.
@@ -46,7 +44,8 @@ Habit Tracker Changes:
 	x Remove bullets in list items
 	x Progress bar add a plus (+)
 	x Add a star when progress bar is full
-	- Add logo
+	x Created new Logos
+	x Add logo to title 
 	- Change color
 	- Make star yellow star
 	- On page scroll make nav in header and footer transparent.
@@ -61,7 +60,7 @@ Habit Tracker Changes:
 	x clear page on save
 
 	Habit Template Edit
-	- Fix bug where on name delete the page changes to a non-existing page
+	x Fix bug where on name delete the page displays non-existing habit entry message
 
 	Habit Templates
 	x My Habits

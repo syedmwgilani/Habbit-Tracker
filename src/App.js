@@ -4,7 +4,8 @@ export default function App() {
   return (
     <div className="App">
       <header>
-        <h1>Habit Tracker</h1>
+        <img className="logo" src="logo192.png" alt="Habit Tracker Logo"/>
+        <h1 className="header-text">Habit Tracker</h1>
       </header>
 
       <nav>

@@ -23,12 +23,26 @@
 }
 
 header {
-    padding: 10px;
-    text-align: center;
+    margin: 0.625rem;
+    display: grid;
+    grid-template-areas: "padding1 logo header-text padding2";
+    grid-template-columns: 4fr 1.5fr 2.5fr 4fr;
+    grid-template-rows: 3rem;
+    /* gap: 0.5rem; */
+    align-items: center;
 }
 
-header h1 {
+.logo {
+    grid-area: logo;
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+}
+
+.header-text {
     font-family: var(--secondary-font-family);
+    grid-area: header-text;
+    justify-self: center;
 }
 
 nav {
@@ -226,6 +240,7 @@ input[type=checkbox] {
     position: relative;
     height: 6rem;
 }
+
 .validation-text {
     position: absolute;
     top: 25%;
@@ -234,6 +249,7 @@ input[type=checkbox] {
     padding: 0.5rem 1rem;
     background-color: var(--warning-bg-color);
 }
+
 .validation-text b {
     background-color: var(--warning-bg-color);
 }
@@ -252,9 +268,11 @@ input[type=checkbox] {
     border: 2px solid var(--primary-color);
     cursor: pointer;
 }
+
 .save-button:hover {
     filter: brightness(0.85);
 }
+
 .save-button-saving {
     filter: brightness(0.85);
 }
@@ -263,6 +281,7 @@ input[type=checkbox] {
     left: 25%;
     width: 50%;
 }
+
 .save-button-edit {
     right: 20%;
     width: 25%;
@@ -279,6 +298,7 @@ input[type=checkbox] {
     border: 2px solid var(--primary-color);
     cursor: pointer;
 }
+
 .cancel-button:hover {
     filter: brightness(0.85);
 }
@@ -309,6 +329,7 @@ svg {
     border: 2px solid var(--primary-color);
     cursor: pointer;
 }
+
 .remove-button:hover {
     filter: brightness(0.85);
 }
@@ -324,6 +345,7 @@ svg {
     border: 2px solid var(--primary-color);
     cursor: pointer;
 }
+
 .edit-button:hover {
     filter: brightness(0.85);
 }
