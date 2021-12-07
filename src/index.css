@@ -6,8 +6,10 @@
     --primary-font-family: 'Quicksand', sans-serif;
 
     --secondary-color: white;
-    --secondary-bg-color: rgb(100, 220, 220);
+    --secondary-bg-color: rgb(198,90,198);
     --secondary-font-family: 'Roboto', sans-serif;
+
+    --tertiary-color: rgb(209,209,122);
 
     --warning-bg-color: rgb(198, 90, 90)
 }
@@ -379,6 +381,9 @@ svg {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-star-full {
+    color: var(--tertiary-color);
+}
 .icon-star-full:before {
     content: "\e9d9";
 }

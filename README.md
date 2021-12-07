@@ -46,8 +46,8 @@ Habit Tracker Changes:
 	x Add a star when progress bar is full
 	x Created new Logos
 	x Add logo to title 
-	- Change color
-	- Make star yellow star
+	x Change progress bar color to --secondary-bg-color.
+	x Change star background color to yellow.
 	- On page scroll make nav in header and footer transparent.
 	- Add top of page button that appears on page scroll.
 		* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_scroll_to_top
