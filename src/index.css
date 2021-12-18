@@ -24,6 +24,10 @@
 ::selection {
     background: none;
 }
+input[type=text]::selection,
+input[type=number]::selection {
+    background: var(--secondary-bg-color);
+}
 
 header {
     margin: 0.625rem;
