@@ -6,12 +6,13 @@
     --primary-font-family: 'Quicksand', sans-serif;
 
     --secondary-color: white;
-    --secondary-bg-color: rgb(198,90,198);
+    --secondary-bg-color: rgb(198, 90, 198);
     --secondary-font-family: 'Roboto', sans-serif;
 
-    --tertiary-color: rgb(209,209,122);
+    --tertiary-color: rgb(209, 209, 122);
 
-    --warning-bg-color: rgb(198, 90, 90)
+    --warning-color: rgb(198, 90, 90);
+    --warning-bg-color: rgb(198, 90, 90);
 }
 
 * {
@@ -222,6 +223,17 @@ input[type=number] {
     box-sizing: border-box;
 }
 
+::placeholder {
+    color: var(--primary-color);
+    opacity: 1; /* Firefox */
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: var(--primary-color);
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: var(--primary-color);
+}
+
 input[type=checkbox] {
     margin: 0.5rem;
 }
@@ -352,6 +364,9 @@ svg {
     filter: brightness(0.85);
 }
 
+.form-error-message {
+    color: var(--warning-color);
+}
 
 @font-face {
     font-family: 'icomoon';
@@ -384,6 +399,7 @@ svg {
 .icon-star-full {
     color: var(--tertiary-color);
 }
+
 .icon-star-full:before {
     content: "\e9d9";
 }
