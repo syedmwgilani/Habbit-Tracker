@@ -242,6 +242,10 @@ input[type=checkbox] {
     margin: 0.5rem;
 }
 
+.require-star {
+    color: var(--warning-color)
+}
+
 .checkboxes-container {
     width: 100%;
     padding: 0.5rem 1rem;
@@ -266,6 +270,7 @@ input[type=checkbox] {
     width: 50%;
     padding: 0.5rem 1rem;
     background-color: var(--warning-bg-color);
+    text-align: center;
 }
 
 .validation-text b {

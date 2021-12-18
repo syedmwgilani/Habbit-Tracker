@@ -2,7 +2,7 @@ import { Component } from "react";
 import SaveButton from "./SaveButton";
 import WeekInput from "./WeekInput";
 import FormErrors from "./FormErrors";
-const { setNestedVal, generateUIDKey, addPrefix, isDate} = require('./helperModule.js');
+const { setNestedVal, generateUIDKey, addPrefix, isDate } = require('./helperModule.js');
 
 class HabitTemplate extends Component {
 
@@ -26,8 +26,8 @@ class HabitTemplate extends Component {
                 Sunday: false
             },
             startDate: addPrefix(() => monthStr.length > 1, monthStr, '0')
-                        + '/' +  addPrefix(() => dateStr.length > 1, dateStr, '0')
-                        + '/' + new Date().getFullYear().toString(),
+                + '/' + addPrefix(() => dateStr.length > 1, dateStr, '0')
+                + '/' + new Date().getFullYear().toString(),
             validDate: true
         }
     }
@@ -35,10 +35,6 @@ class HabitTemplate extends Component {
     handleInputChange(event) {
         const target = event.target
         let value = target.type === 'checkbox' ? target.checked : target.value
-
-        if (target.name === 'dailyOccurrence') {
-            value = value < 1 ? 1 : value
-        }
 
         const name = target.name
 
@@ -98,25 +94,34 @@ class HabitTemplate extends Component {
                 Sunday: false
             },
             startDate: addPrefix(() => monthStr.length > 1, monthStr, '0')
-                        + '/' +  addPrefix(() => dateStr.length > 1, dateStr, '0')
-                        + '/' + new Date().getYear().toString().slice(-2)
+                + '/' + addPrefix(() => dateStr.length > 1, dateStr, '0')
+                + '/' + new Date().getYear().toString().slice(-2)
         })
     }
 
     render() {
-        let showSaveButton = (
+
+        let showMessageOrSaveButton = (
             <div className="validation-text-container">
-                <div className="validation-text">Please Enter a Habit <b>Name</b>, select at least <b>One</b> Weekday, and set a <b>Start Date</b>.</div>
+                <div className="validation-text">Please Fill in All Required (*) Fields.</div>
             </div>
         )
+
         const weekdayChecked = Object.values(this.state.weeklyOccurrence).includes(true)
-        if (this.state.name !== '' && weekdayChecked && this.state.startDate !== '') {
-            showSaveButton = (
+        if (this.state.name !== '' 
+            && weekdayChecked 
+            && this.state.dailyOccurrence !== ''
+            && this.state.dailyOccurrence >= 1
+            && this.state.startDate !== ''
+            && this.state.validDate ) {
+
+            showMessageOrSaveButton = (
                 <SaveButton className="save-button save-button-add"
                             classNameSaving="save-button save-button-add save-button-saving"
                             onClick={event => this.saveStateToLocalStorage()}
                             endOfSaveFunction={event => this.setEmptyState()} />
             )
+
         }
 
         return (
@@ -128,7 +133,7 @@ class HabitTemplate extends Component {
 
                     <div className="pl1 pr1">
                         <label htmlFor="habitNameId">
-                            <b>Name:</b>
+                            <b>Name:</b> <span className="require-star">*</span>
                             <input type="text"
                                 id="habitNameId"
                                 name="name"
@@ -144,7 +149,7 @@ class HabitTemplate extends Component {
 
                     <div className="mt1 pl1 pr1">
                         <label htmlFor="dailyOccurrenceId">
-                            <b>Daily Occurrence:</b>
+                            <b>Daily Occurrence:</b> <span className="require-star">*</span>
                             <input type="number"
                                 id="dailyOccurrenceId"
                                 name="dailyOccurrence"
@@ -153,10 +158,11 @@ class HabitTemplate extends Component {
                             />
                         </label>
                     </div>
+                    <FormErrors showMessage={this.state.dailyOccurrence < 1} message="Please Enter a Value 1 or Greater!" />
 
                     <div className="mt1 pl1 pr1">
                         <label htmlFor="startDateId">
-                            <b>Start Date:</b>
+                            <b>Start Date:</b> <span className="require-star">*</span>
                             <input type="text"
                                 id="startDateId"
                                 name="startDate"
@@ -169,7 +175,7 @@ class HabitTemplate extends Component {
                     <FormErrors showMessage={!this.state.validDate} message="Please Enter a Valid Date MM/DD/YYYY" />
 
                     <div className="button-container">
-                        {showSaveButton}
+                        {showMessageOrSaveButton}
                     </div>
                 </div>
 

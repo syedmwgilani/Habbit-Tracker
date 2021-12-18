@@ -2,7 +2,7 @@ function WeekInput(props) {
 
     return (
         <div>
-            <b>Weekly Occurence: </b>
+            <b>Weekly Occurence:</b> <span className="require-star">*</span>
             <div className="checkboxes-container">
                 <label className="checkbox-container" htmlFor="mondayId">
                     <input type="checkbox"
