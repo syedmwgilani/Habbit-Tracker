@@ -25,7 +25,7 @@ module.exports = {
     //obj - check object keys to see if id exists
     generateUIDKey: function (obj) {
         let ranNumStr = Math.floor(Math.random() * 1.0e+16).toString()
-        while(obj[ranNumStr]) {
+        while (obj[ranNumStr]) {
             ranNumStr = Math.floor(Math.random() * 1.0e+16).toString()
         }
         return ranNumStr;
@@ -44,18 +44,24 @@ module.exports = {
     // ex: dot(false, props, 'weeklyOccurrence', 'wednesday')
     dot: function (defaultVal, ...args) {
         let returnDefault = false;
-        
-        if(typeof(args[0]) !== 'object')
+
+        if (typeof (args[0]) !== 'object')
             return defaultVal
 
-        return args.reduce( function(acc, cur) {
-            if(returnDefault)
+        return args.reduce(function (acc, cur) {
+            if (returnDefault)
                 return defaultVal;
-            if(typeof(acc[cur]) === 'undefined' || acc[cur] === null) {
+            if (typeof (acc[cur]) === 'undefined' || acc[cur] === null) {
                 returnDefault = true;
                 return defaultVal;
             }
             return acc[cur];
         })
+    },
+
+    // https://stackoverflow.com/questions/1353684/detecting-an-invalid-date-date-instance-in-javascript
+    isDate: function (dateStr) {
+        const matches = dateStr.match(/^\d?\d\/(\d?\d)\/\d{4}$/);
+        return matches ? !!Date.parse(dateStr) && new Date(dateStr).getDate() === Number.parseInt(matches[1]) : false;
     },
 }
