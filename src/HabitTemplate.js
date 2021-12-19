@@ -28,7 +28,9 @@ class HabitTemplate extends Component {
             startDate: addPrefix(() => monthStr.length > 1, monthStr, '0')
                 + '/' + addPrefix(() => dateStr.length > 1, dateStr, '0')
                 + '/' + new Date().getFullYear().toString(),
-            validDate: true
+            valid_startDate: true,
+            endDate: '',
+            valid_endDate: false,
         }
     }
 
@@ -47,10 +49,11 @@ class HabitTemplate extends Component {
     handleDateChange(event) {
         let value = event.target.value
         const name = event.target.name
+        const validFieldName = 'valid_' + name
 
         this.setState({
             [name]: value,
-            validDate: isDate(value)
+            [validFieldName]: isDate(value)
         })
     }
 
@@ -95,7 +98,10 @@ class HabitTemplate extends Component {
             },
             startDate: addPrefix(() => monthStr.length > 1, monthStr, '0')
                 + '/' + addPrefix(() => dateStr.length > 1, dateStr, '0')
-                + '/' + new Date().getYear().toString().slice(-2)
+                + '/' + new Date().getFullYear().toString(),
+            valid_startDate: true,
+            endDate: '',
+            valid_endDate: false,
         })
     }
 
@@ -113,7 +119,10 @@ class HabitTemplate extends Component {
             && this.state.dailyOccurrence !== ''
             && this.state.dailyOccurrence >= 1
             && this.state.startDate !== ''
-            && this.state.validDate ) {
+            && this.state.valid_startDate 
+            && (this.state.valid_endDate 
+                || this.state.endDate === '')
+            ) {
 
             showMessageOrSaveButton = (
                 <SaveButton className="save-button save-button-add"
@@ -172,7 +181,22 @@ class HabitTemplate extends Component {
                             />
                         </label>
                     </div>
-                    <FormErrors showMessage={!this.state.validDate} message="Please Enter a Valid Date MM/DD/YYYY" />
+                    <FormErrors showMessage={!this.state.valid_startDate} message="Please Enter a Valid Date MM/DD/YYYY" />
+
+                    <div className="mt1 pl1 pr1">
+                        <label htmlFor="endDateId">
+                            <b>End Date: (optional)</b>
+                            <input type="text"
+                                id="endDateId"
+                                name="endDate"
+                                value={this.state.endDate}
+                                onChange={(event) => this.handleDateChange(event)}
+                                placeholder="MM/DD/YYYY"
+                            />
+                        </label>
+                    </div>
+                    <FormErrors showMessage={!this.state.valid_endDate && this.state.endDate !== ''} message="Please Enter a Valid Date MM/DD/YYYY" />
+                    <FormErrors showMessage={Date.parse(this.state.startDate) >= Date.parse(this.state.endDate)} message="Please Enter a Date Greater than Start Date" />
 
                     <div className="button-container">
                         {showMessageOrSaveButton}
