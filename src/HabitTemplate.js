@@ -195,8 +195,8 @@ class HabitTemplate extends Component {
                             />
                         </label>
                     </div>
-                    <FormErrors showMessage={!this.state.valid_endDate && this.state.endDate !== ''} message="Please Enter a Valid Date MM/DD/YYYY" />
-                    <FormErrors showMessage={Date.parse(this.state.startDate) >= Date.parse(this.state.endDate)} message="Please Enter a Date Greater than Start Date" />
+                    <FormErrors showMessage={!this.state.valid_endDate && this.state.endDate !== ''} message="Please Enter a Valid Date MM/DD/YYYY or Keep Empty" />
+                    <FormErrors showMessage={Date.parse(this.state.startDate) >= Date.parse(this.state.endDate)} message="Please Enter a Date Greater than the Start Date" />
 
                     <div className="button-container">
                         {showMessageOrSaveButton}
