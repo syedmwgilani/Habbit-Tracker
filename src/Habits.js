@@ -64,7 +64,7 @@ class Habits extends Component {
             + '/'
             + addPrefix(() => dayStr.length > 1, dayStr, '0')
             + '/'
-            + today.getFullYear().toString().substr(-2)
+            + today.getFullYear().toString().substring(2)
 
         const JSONactiveHabitTemp = localStorage.getItem('activeHabitTemplates')
         const activeHabitTemp = JSON.parse(JSONactiveHabitTemp)
@@ -184,7 +184,7 @@ class Habits extends Component {
             + '/'
             + addPrefix(() => dayStr.length > 1, dayStr, '0')
             + '/'
-            + previousDate.getFullYear().toString().substr(-2)
+            + previousDate.getFullYear().toString().substring(2)
 
         
         const activeHabitTemp = this.state.activeHabitTemp
@@ -266,7 +266,7 @@ class Habits extends Component {
             + '/'
             + addPrefix(() => dayStr.length > 1, dayStr, '0')
             + '/'
-            + nextDate.getFullYear().toString().substr(-2)
+            + nextDate.getFullYear().toString().substring(2)
 
         
         const activeHabitTemp = this.state.activeHabitTemp
