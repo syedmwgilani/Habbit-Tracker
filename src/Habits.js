@@ -65,6 +65,12 @@ class Habits extends Component {
             + addPrefix(() => dayStr.length > 1, dayStr, '0')
             + '/'
             + today.getFullYear().toString().substring(2)
+        
+        const date = new Date(dateShortenedFormatString) 
+                                // TODO use this date instead of today
+                                // date.getTime() has been zeroed out
+                                // TODO store date in state to used in nextDay and previousDay
+                                //  functions.
 
         const JSONactiveHabitTemp = localStorage.getItem('activeHabitTemplates')
         const activeHabitTemp = JSON.parse(JSONactiveHabitTemp)
@@ -73,14 +79,18 @@ class Habits extends Component {
         let habits = {}
         if (activeHabitTemp) {
             const JSONhabits = localStorage.getItem('habits_' + dateKeyString)
+            console.log('xxxhabits_' + dateKeyString, JSONhabits);
 
             if (JSONhabits === null) {
-                //Create new habits obj
+                //Create new habits
                 habits = Object.keys(activeHabitTemp).reduce((habits, key) => {
-                    if (activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]) {
+                    const startDateTime = new Date(activeHabitTemp[key].startDate).getTime()
+                    const endDateTime = new Date(activeHabitTemp[key].endDate).getTime()
+                    if (activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek] 
+                        && date.getTime() >= startDateTime
+                        && ( isNaN(endDateTime) || date.getTime() <= endDateTime )
+                        ) {
                         const habit = {}
-                        habit.name = activeHabitTemp[key].name
-                        habit.dailyOccurrence = activeHabitTemp[key].dailyOccurrence
                         habit.progress = 0
 
                         habits[key] = habit
@@ -89,27 +99,28 @@ class Habits extends Component {
                     return habits
                 }, {})
             } else {
-                //Update old habits obj
+                //Update old habits to include new/updated habits or old habits
                 const oldHabitsData = JSON.parse(JSONhabits)
+                console.log('yyy', oldHabitsData);
 
                 habits = Object.keys(activeHabitTemp).reduce((habits, key) => {
-
-                    let habit = oldHabitsData[key]
-
-                    if (habit && activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]) {
-                        habit.name = activeHabitTemp[key].name
-                        habit.dailyOccurrence = activeHabitTemp[key].dailyOccurrence
-
-                        habits[key] = habit
-                        return habits
-                    } else if (activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]) {
-                        habit = {}
-                        habit.name = activeHabitTemp[key].name
-                        habit.dailyOccurrence = activeHabitTemp[key].dailyOccurrence
+                    const startDateTime = new Date(activeHabitTemp[key].startDate).getTime()
+                    const endDateTime = new Date(activeHabitTemp[key].endDate).getTime()
+                    console.log('zzz', startDateTime)
+                    console.log('   ', endDateTime)
+                    if (!oldHabitsData[key] 
+                        && activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]
+                        && date.getTime() >= startDateTime
+                        && ( isNaN(endDateTime) || date.getTime() <= endDateTime )) {
+                        let habit = {}
                         habit.progress = 0
-
                         habits[key] = habit
+
                         return habits
+                    } else if ( activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]
+                                && date.getTime() >= startDateTime
+                                && ( isNaN(endDateTime) || date.getTime() <= endDateTime )) {
+                        habits[key] = oldHabitsData[key]
                     }
 
                     return habits
@@ -126,7 +137,7 @@ class Habits extends Component {
         }
         console.log('CREATED Habit state: ', this.state)
 
-        this.saveHabitLocalStorage()
+        // this.saveHabitLocalStorage()
     }
 
     saveHabitLocalStorage() {
@@ -192,14 +203,18 @@ class Habits extends Component {
         let habits = {}
         if (activeHabitTemp) {
             const JSONhabits = localStorage.getItem('habits_' + dateKeyString)
+            console.log('xxxhabits_' + dateKeyString, JSONhabits);
 
             if (JSONhabits === null) {
-                //Create new habits obj
+                //Create new habits
                 habits = Object.keys(activeHabitTemp).reduce((habits, key) => {
-                    if (activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]) {
+                    const startDateTime = new Date(activeHabitTemp[key].startDate).getTime()
+                    const endDateTime = new Date(activeHabitTemp[key].endDate).getTime()
+                    if (activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek] 
+                        && previousDate.getTime() >= startDateTime
+                        && ( isNaN(endDateTime) || previousDate.getTime() <= endDateTime )
+                        ) {
                         const habit = {}
-                        habit.name = activeHabitTemp[key].name
-                        habit.dailyOccurrence = activeHabitTemp[key].dailyOccurrence
                         habit.progress = 0
 
                         habits[key] = habit
@@ -208,27 +223,28 @@ class Habits extends Component {
                     return habits
                 }, {})
             } else {
-                //Update old habits obj
+                //Update old habits to include new/updated habits or old habits
                 const oldHabitsData = JSON.parse(JSONhabits)
+                console.log('yyy', oldHabitsData);
 
                 habits = Object.keys(activeHabitTemp).reduce((habits, key) => {
-
-                    let habit = oldHabitsData[key]
-
-                    if (habit && activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]) {
-                        habit.name = activeHabitTemp[key].name
-                        habit.dailyOccurrence = activeHabitTemp[key].dailyOccurrence
-
-                        habits[key] = habit
-                        return habits
-                    } else if (activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]) {
-                        habit = {}
-                        habit.name = activeHabitTemp[key].name
-                        habit.dailyOccurrence = activeHabitTemp[key].dailyOccurrence
+                    const startDateTime = new Date(activeHabitTemp[key].startDate).getTime()
+                    const endDateTime = new Date(activeHabitTemp[key].endDate).getTime()
+                    console.log('zzz', startDateTime)
+                    console.log('   ', endDateTime)
+                    if (!oldHabitsData[key] 
+                        && activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]
+                        && previousDate.getTime() >= startDateTime
+                        && ( isNaN(endDateTime) || previousDate.getTime() <= endDateTime )) {
+                        let habit = {}
                         habit.progress = 0
-
                         habits[key] = habit
+
                         return habits
+                    } else if ( activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]
+                                && previousDate.getTime() >= startDateTime
+                                && ( isNaN(endDateTime) || previousDate.getTime() <= endDateTime )) {
+                        habits[key] = oldHabitsData[key]
                     }
 
                     return habits
@@ -274,14 +290,18 @@ class Habits extends Component {
         let habits = {}
         if (activeHabitTemp) {
             const JSONhabits = localStorage.getItem('habits_' + dateKeyString)
+            console.log('xxxhabits_' + dateKeyString, JSONhabits);
 
             if (JSONhabits === null) {
-                //Create new habits obj
+                //Create new habits
                 habits = Object.keys(activeHabitTemp).reduce((habits, key) => {
-                    if (activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]) {
+                    const startDateTime = new Date(activeHabitTemp[key].startDate).getTime()
+                    const endDateTime = new Date(activeHabitTemp[key].endDate).getTime()
+                    if (activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek] 
+                        && nextDate.getTime() >= startDateTime
+                        && ( isNaN(endDateTime) || nextDate.getTime() <= endDateTime )
+                        ) {
                         const habit = {}
-                        habit.name = activeHabitTemp[key].name
-                        habit.dailyOccurrence = activeHabitTemp[key].dailyOccurrence
                         habit.progress = 0
 
                         habits[key] = habit
@@ -290,27 +310,28 @@ class Habits extends Component {
                     return habits
                 }, {})
             } else {
-                //Update old habits obj
+                //Update old habits to include new/updated habits or old habits
                 const oldHabitsData = JSON.parse(JSONhabits)
+                console.log('yyy', oldHabitsData);
 
                 habits = Object.keys(activeHabitTemp).reduce((habits, key) => {
-
-                    let habit = oldHabitsData[key]
-
-                    if (habit && activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]) {
-                        habit.name = activeHabitTemp[key].name
-                        habit.dailyOccurrence = activeHabitTemp[key].dailyOccurrence
-
-                        habits[key] = habit
-                        return habits
-                    } else if (activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]) {
-                        habit = {}
-                        habit.name = activeHabitTemp[key].name
-                        habit.dailyOccurrence = activeHabitTemp[key].dailyOccurrence
+                    const startDateTime = new Date(activeHabitTemp[key].startDate).getTime()
+                    const endDateTime = new Date(activeHabitTemp[key].endDate).getTime()
+                    console.log('zzz', startDateTime)
+                    console.log('   ', endDateTime)
+                    if (!oldHabitsData[key] 
+                        && activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]
+                        && nextDate.getTime() >= startDateTime
+                        && ( isNaN(endDateTime) || nextDate.getTime() <= endDateTime )) {
+                        let habit = {}
                         habit.progress = 0
-
                         habits[key] = habit
+
                         return habits
+                    } else if ( activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]
+                                && nextDate.getTime() >= startDateTime
+                                && ( isNaN(endDateTime) || nextDate.getTime() <= endDateTime )) {
+                        habits[key] = oldHabitsData[key]
                     }
 
                     return habits
@@ -329,11 +350,16 @@ class Habits extends Component {
     }
 
     render() {
+        const activeHabitTemp = this.state.activeHabitTemp
         const habits = this.state.habits
+
         const habitsEleMap = Object.keys(habits).map((key, i) => {
             return (
                 <li className="pt1 pb1" key={key}>
-                    <ProgressBar {...habits[key]}
+                    <ProgressBar 
+                        name = {activeHabitTemp[key].name}
+                        dailyOccurrence = {activeHabitTemp[key].dailyOccurrence}
+                        progress = {habits[key].progress}
                         onClick={event => this.incrementProgress(key)}
                         onClickDecrement={event => this.decrementProgress(key)} />
                 </li>
