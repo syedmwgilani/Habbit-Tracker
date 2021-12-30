@@ -2,8 +2,9 @@ import { Component } from "react"
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import WeekInput from "./WeekInput";
+import FormErrors from "./FormErrors";
 import SaveButton from "./SaveButton";
-const { setNestedVal, dot } = require('./helperModule.js');
+const { setNestedVal, addPrefix, isDate, dot } = require('./helperModule.js');
 
 function NavigatationSaveButton(props) {
     const navigate = useNavigate()
@@ -31,12 +32,16 @@ class HabitTemplateEdit extends Component {
     constructor(props) {
         super(props)
 
-        //TODO see if it is possible to do with useParams function
+        //TODO see if it is possible to do this with the useParams function
         //https://medium.com/geekculture/how-to-use-react-router-useparams-436851fd5ef6
         const habitId = window.location.pathname.slice(-16)
         const habit = JSON.parse(localStorage.getItem('activeHabitTemplates'))[habitId]
 
         console.log('habit: ', habit)
+
+        const today = new Date()
+        const monthStr = (today.getMonth() + 1).toString()
+        const dateStr = today.getDate().toString()
 
         this.state = {
             habitId: habitId,
@@ -52,6 +57,14 @@ class HabitTemplateEdit extends Component {
                 Saturday: dot(false, habit, 'weeklyOccurrence', 'Saturday'),
                 Sunday: dot(false, habit, 'weeklyOccurrence', 'Sunday')
             },
+            startDate: dot(
+                addPrefix(() => monthStr.length > 1, monthStr, '0')
+                + '/' + addPrefix(() => dateStr.length > 1, dateStr, '0')
+                + '/' + new Date().getFullYear().toString()
+                , habit, 'startDate'),
+            valid_startDate: dot(true, habit, 'valid_startDate'),
+            endDate: dot('', habit, 'endDate'),
+            valid_endDate: dot(false, habit, 'valid_endDate'),
         }
     }
 
@@ -59,16 +72,23 @@ class HabitTemplateEdit extends Component {
         const target = event.target
         let value = target.type === 'checkbox' ? target.checked : target.value
 
-        if (target.name === 'dailyOccurrence') {
-            value = value < 1 ? 1 : value
-        }
-
         const name = target.name
 
         const copyState = { ...this.state }
         const propArr = name.split('.')
         setNestedVal(copyState, propArr, value)
         this.setState(copyState)
+    }
+
+    handleDateChange(event) {
+        let value = event.target.value
+        const name = event.target.name
+        const validFieldName = 'valid_' + name
+
+        this.setState({
+            [name]: value,
+            [validFieldName]: isDate(value)
+        })
     }
 
     saveStateToLocalStorage() {
@@ -89,12 +109,20 @@ class HabitTemplateEdit extends Component {
 
         let showSaveButton = (
             <div className="validation-text-container">
-                <div className="validation-text">Please Enter a Habit <b>Name</b> and select at least <b>One</b> Weekday.</div>
+                <div className="validation-text">Please Fill in All Required (*) Fields.</div>
             </div>
         )
 
         const weekdayChecked = Object.values(this.state.weeklyOccurrence).includes(true)
-        if (this.state.name !== '' && weekdayChecked) {
+        if (this.state.name !== ''
+            && weekdayChecked
+            && this.state.dailyOccurrence !== ''
+            && this.state.dailyOccurrence >= 1
+            && this.state.startDate !== ''
+            && this.state.valid_startDate
+            && (this.state.valid_endDate
+                || this.state.endDate === '') ) 
+        {
             showSaveButton = (
                 <NavigatationSaveButton onClick={event => this.saveStateToLocalStorage()} />
             )
@@ -102,7 +130,7 @@ class HabitTemplateEdit extends Component {
 
         //if the habitId does not exist show message instead of rendering rest of page
         let content = (<p>This Habit does not exist. You might want to go to the <Link to="/habit-tracker/habit-templates">All My Habits</Link> page instead</p>)
-        
+
         if (this.state.habitExists) {
             content = (
                 <div className="pb5" >
@@ -110,7 +138,7 @@ class HabitTemplateEdit extends Component {
 
                     <div className="pl1 pr1">
                         <label htmlFor="habitNameId">
-                            <b>Name:</b>
+                            <b>Name:</b> <span className="require-star">*</span>
                             <input type="text"
                                 id="habitNameId"
                                 name="name"
@@ -126,7 +154,7 @@ class HabitTemplateEdit extends Component {
 
                     <div className="mt1 pl1 pr1">
                         <label htmlFor="dailyOccurrenceId">
-                            <b>Daily Occurrence:</b>
+                            <b>Daily Occurrence:</b> <span className="require-star">*</span>
                             <input type="number"
                                 id="dailyOccurrenceId"
                                 name="dailyOccurrence"
@@ -135,6 +163,37 @@ class HabitTemplateEdit extends Component {
                             />
                         </label>
                     </div>
+                    <FormErrors showMessage={this.state.dailyOccurrence < 1} message="Please Enter a Value 1 or Greater!" />
+
+                    <div className="mt1 pl1 pr1">
+                        <label htmlFor="startDateId">
+                            <b>Start Date:</b> <span className="require-star">*</span>
+                            <input type="text"
+                                id="startDateId"
+                                name="startDate"
+                                value={this.state.startDate}
+                                onChange={(event) => this.handleDateChange(event)}
+                                placeholder="MM/DD/YYYY"
+                            />
+                        </label>
+                    </div>
+                    <FormErrors showMessage={!this.state.valid_startDate} message="Please Enter a Valid Date MM/DD/YYYY" />
+
+                    <div className="mt1 pl1 pr1">
+                        <label htmlFor="endDateId">
+                            <b>End Date: (optional)</b>
+                            <input type="text"
+                                id="endDateId"
+                                name="endDate"
+                                value={this.state.endDate}
+                                onChange={(event) => this.handleDateChange(event)}
+                                placeholder="MM/DD/YYYY"
+                            />
+                        </label>
+                    </div>
+                    <FormErrors showMessage={!this.state.valid_endDate && this.state.endDate !== ''} message="Please Enter a Valid Date MM/DD/YYYY or Keep Empty" />
+                    <FormErrors showMessage={Date.parse(this.state.startDate) >= Date.parse(this.state.endDate)} message="Please Enter a Date Greater than the Start Date" />
+
                     <div className="button-container">
                         <NavigatationCancelButton />
                         {showSaveButton}
