@@ -85,26 +85,23 @@ x Icon Change to light purple
 1. Create an array that hold reminders in HabitTemplate.js
 	- In Habits.js look at all the reminder times.
 	- Create notifications based on reminder times.
-2. Refresh Habits.js page when day changes
-3. Delete Habits older then a year.
-
+2. Refresh Habits.js page when day changes.
+	- I might have to add service workers to do this
 
 
 ## Limitations:
 
 - Due to the limitations of localStorage, this will only show data for a year.
-   - The user will only be able to go back input data for about a year prior.
-   - Make this apparent to the user.
-- Add feature to delete habits that are older than a year.
-
+   - The user will only be able to go back through date set for about a year prior.
+   - SOLUTION: Delete Habits older then a year.
+	- Probably a bad solution
 ---
 
-localStorage.getItem('activeHabitTemplates') OR localStorage.getItem('inactiveHabitTemplates')
+localStorage.getItem('activeHabitTemplates')
 
 {
 	"3330192929643203": {
 		"name": "Push ups",
-		"numberOfDays": 32,
 		"weeklyOccurrence": {
 			"Monday": true,
 			"Tuesday": true,
@@ -116,7 +113,11 @@ localStorage.getItem('activeHabitTemplates') OR localStorage.getItem('inactiveHa
 		},
 		"dailyOccurrence": 2,
 		"reminder": true,
-		"reminderTimes": "8:30 PM"
+		"reminderTimes": "8:30 PM",
+		startDate: "12/21/2021",
+		endDate: "",
+		valid_startDate: true,
+		valid_endDate: false,
 	}
 }
 
@@ -124,80 +125,7 @@ localStorage.getItem('habits_2021_10_25')
 
 {
    "3330192929643203": {
-      "name":"Push ups",
-      "dailyOccurrence":2,
       "progress": 0
    },
 }
 
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
