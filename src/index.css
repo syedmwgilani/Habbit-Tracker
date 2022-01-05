@@ -24,6 +24,7 @@
 ::selection {
     background: none;
 }
+
 input[type=text]::selection,
 input[type=number]::selection {
     background: var(--secondary-bg-color);
@@ -107,6 +108,10 @@ nav a.tab {
     padding-bottom: 5rem;
 }
 
+.mt05 {
+    margin-top: 0.5rem;
+}
+
 .mt1 {
     margin-top: 1rem;
 }
@@ -131,6 +136,30 @@ nav a.tab {
     display: grid;
     grid-template-columns: minmax(1rem, 1fr) minmax(auto, 70ch) minmax(1rem, 1fr);
     grid-gap: 1rem;
+}
+
+.day-changer {
+    text-align: center;
+}
+
+.day-changer-text {
+    font-weight: 900;
+    font-size: large;
+}
+
+.day-changer-button {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-weight: 900;
+    font-size: x-large;
 }
 
 .star-container {
@@ -229,12 +258,17 @@ input[type=number] {
 
 ::placeholder {
     color: var(--primary-color);
-    opacity: 1; /* Firefox */
+    opacity: 1;
+    /* Firefox */
 }
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
     color: var(--primary-color);
 }
-::-ms-input-placeholder { /* Microsoft Edge */
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
     color: var(--primary-color);
 }
 

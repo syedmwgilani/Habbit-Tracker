@@ -65,12 +65,12 @@ class Habits extends Component {
             + addPrefix(() => dayStr.length > 1, dayStr, '0')
             + '/'
             + today.getFullYear().toString().substring(2)
-        
-        const date = new Date(dateShortenedFormatString) 
-                                // TODO use this date instead of today
-                                // date.getTime() has been zeroed out
-                                // TODO store date in state to used in nextDay and previousDay
-                                //  functions.
+
+        const date = new Date(dateShortenedFormatString)
+        // TODO use this date instead of today
+        // date.getTime() has been zeroed out
+        // TODO store date in state to used in nextDay and previousDay
+        //  functions.
 
         const JSONactiveHabitTemp = localStorage.getItem('activeHabitTemplates')
         const activeHabitTemp = JSON.parse(JSONactiveHabitTemp)
@@ -86,10 +86,10 @@ class Habits extends Component {
                 habits = Object.keys(activeHabitTemp).reduce((habits, key) => {
                     const startDateTime = new Date(activeHabitTemp[key].startDate).getTime()
                     const endDateTime = new Date(activeHabitTemp[key].endDate).getTime()
-                    if (activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek] 
+                    if (activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]
                         && date.getTime() >= startDateTime
-                        && ( isNaN(endDateTime) || date.getTime() <= endDateTime )
-                        ) {
+                        && (isNaN(endDateTime) || date.getTime() <= endDateTime)
+                    ) {
                         const habit = {}
                         habit.progress = 0
 
@@ -108,18 +108,18 @@ class Habits extends Component {
                     const endDateTime = new Date(activeHabitTemp[key].endDate).getTime()
                     console.log('zzz', startDateTime)
                     console.log('   ', endDateTime)
-                    if (!oldHabitsData[key] 
+                    if (!oldHabitsData[key]
                         && activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]
                         && date.getTime() >= startDateTime
-                        && ( isNaN(endDateTime) || date.getTime() <= endDateTime )) {
+                        && (isNaN(endDateTime) || date.getTime() <= endDateTime)) {
                         let habit = {}
                         habit.progress = 0
                         habits[key] = habit
 
                         return habits
-                    } else if ( activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]
-                                && date.getTime() >= startDateTime
-                                && ( isNaN(endDateTime) || date.getTime() <= endDateTime )) {
+                    } else if (activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]
+                        && date.getTime() >= startDateTime
+                        && (isNaN(endDateTime) || date.getTime() <= endDateTime)) {
                         habits[key] = oldHabitsData[key]
                     }
 
@@ -197,7 +197,7 @@ class Habits extends Component {
             + '/'
             + previousDate.getFullYear().toString().substring(2)
 
-        
+
         const activeHabitTemp = this.state.activeHabitTemp
 
         let habits = {}
@@ -210,10 +210,10 @@ class Habits extends Component {
                 habits = Object.keys(activeHabitTemp).reduce((habits, key) => {
                     const startDateTime = new Date(activeHabitTemp[key].startDate).getTime()
                     const endDateTime = new Date(activeHabitTemp[key].endDate).getTime()
-                    if (activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek] 
+                    if (activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]
                         && previousDate.getTime() >= startDateTime
-                        && ( isNaN(endDateTime) || previousDate.getTime() <= endDateTime )
-                        ) {
+                        && (isNaN(endDateTime) || previousDate.getTime() <= endDateTime)
+                    ) {
                         const habit = {}
                         habit.progress = 0
 
@@ -232,18 +232,18 @@ class Habits extends Component {
                     const endDateTime = new Date(activeHabitTemp[key].endDate).getTime()
                     console.log('zzz', startDateTime)
                     console.log('   ', endDateTime)
-                    if (!oldHabitsData[key] 
+                    if (!oldHabitsData[key]
                         && activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]
                         && previousDate.getTime() >= startDateTime
-                        && ( isNaN(endDateTime) || previousDate.getTime() <= endDateTime )) {
+                        && (isNaN(endDateTime) || previousDate.getTime() <= endDateTime)) {
                         let habit = {}
                         habit.progress = 0
                         habits[key] = habit
 
                         return habits
-                    } else if ( activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]
-                                && previousDate.getTime() >= startDateTime
-                                && ( isNaN(endDateTime) || previousDate.getTime() <= endDateTime )) {
+                    } else if (activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]
+                        && previousDate.getTime() >= startDateTime
+                        && (isNaN(endDateTime) || previousDate.getTime() <= endDateTime)) {
                         habits[key] = oldHabitsData[key]
                     }
 
@@ -284,7 +284,7 @@ class Habits extends Component {
             + '/'
             + nextDate.getFullYear().toString().substring(2)
 
-        
+
         const activeHabitTemp = this.state.activeHabitTemp
 
         let habits = {}
@@ -297,10 +297,10 @@ class Habits extends Component {
                 habits = Object.keys(activeHabitTemp).reduce((habits, key) => {
                     const startDateTime = new Date(activeHabitTemp[key].startDate).getTime()
                     const endDateTime = new Date(activeHabitTemp[key].endDate).getTime()
-                    if (activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek] 
+                    if (activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]
                         && nextDate.getTime() >= startDateTime
-                        && ( isNaN(endDateTime) || nextDate.getTime() <= endDateTime )
-                        ) {
+                        && (isNaN(endDateTime) || nextDate.getTime() <= endDateTime)
+                    ) {
                         const habit = {}
                         habit.progress = 0
 
@@ -319,18 +319,18 @@ class Habits extends Component {
                     const endDateTime = new Date(activeHabitTemp[key].endDate).getTime()
                     console.log('zzz', startDateTime)
                     console.log('   ', endDateTime)
-                    if (!oldHabitsData[key] 
+                    if (!oldHabitsData[key]
                         && activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]
                         && nextDate.getTime() >= startDateTime
-                        && ( isNaN(endDateTime) || nextDate.getTime() <= endDateTime )) {
+                        && (isNaN(endDateTime) || nextDate.getTime() <= endDateTime)) {
                         let habit = {}
                         habit.progress = 0
                         habits[key] = habit
 
                         return habits
-                    } else if ( activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]
-                                && nextDate.getTime() >= startDateTime
-                                && ( isNaN(endDateTime) || nextDate.getTime() <= endDateTime )) {
+                    } else if (activeHabitTemp[key].weeklyOccurrence[dayOfTheWeek]
+                        && nextDate.getTime() >= startDateTime
+                        && (isNaN(endDateTime) || nextDate.getTime() <= endDateTime)) {
                         habits[key] = oldHabitsData[key]
                     }
 
@@ -356,10 +356,10 @@ class Habits extends Component {
         const habitsEleMap = Object.keys(habits).map((key, i) => {
             return (
                 <li className="pt1 pb1" key={key}>
-                    <ProgressBar 
-                        name = {activeHabitTemp[key].name}
-                        dailyOccurrence = {activeHabitTemp[key].dailyOccurrence}
-                        progress = {habits[key].progress}
+                    <ProgressBar
+                        name={activeHabitTemp[key].name}
+                        dailyOccurrence={activeHabitTemp[key].dailyOccurrence}
+                        progress={habits[key].progress}
                         onClick={event => this.incrementProgress(key)}
                         onClickDecrement={event => this.decrementProgress(key)} />
                 </li>
@@ -371,9 +371,13 @@ class Habits extends Component {
                 No Habits {this.state.dateShortenedFormatString} ! Maybe you might want to create a <Link to="/habit-tracker/habit-template">Habit.</Link>
             </p>)
             : (<p className="pl1">
-                Let's see what habits you have for {this.state.dateShortenedFormatString} !
+                Let's see what habits you have for {this.state.dateShortenedFormatString}!
             </p>)
 
+        const showToday = new Date(this.state.dateShortenedFormatString).toDateString() === new Date().toDateString() 
+                            ?
+                            'Today' 
+                            : this.state.dateShortenedFormatString
 
         return (
             <main className="grid-wrapper">
@@ -381,13 +385,15 @@ class Habits extends Component {
 
                 <div className="pb5">
 
-                    <p onClick={event => this.previousDay()}>Left Arrow &larr;</p>
-                    <p onClick={event => this.nextDay()}>Right Arrow &rarr;</p>
+                    <div className="day-changer mt05">
+                        <button className="day-changer-button" onClick={event => this.previousDay()}>&larr;</button>
+                            <span className="day-changer-text"> {showToday} </span>
+                        <button className="day-changer-button" onClick={event => this.nextDay()}>&rarr;</button>
+                    </div>
 
                     <h2>Schedule:</h2>
                     <span className="pl1">
                         <b>Day of the Week:</b> {this.state.dayOfTheWeek}
-                        {/* <b>Today:</b> {this.state.dayOfTheWeek} */}
                     </span>
                     {message}
                     <ul>
