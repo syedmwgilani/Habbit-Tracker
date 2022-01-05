@@ -25,8 +25,17 @@ module.exports = {
     //obj - check object keys to see if id exists
     generateUIDKey: function (obj) {
         let ranNumStr = Math.floor(Math.random() * 1.0e+16).toString()
+        //if ranNumStr < 16 pad with 0's
+        if(ranNumStr.length<16) {
+            let count = 16 - ranNumStr.length
+            for(let i=0; i<count; i++) ranNumStr += '0'
+        }
         while (obj[ranNumStr]) {
             ranNumStr = Math.floor(Math.random() * 1.0e+16).toString()
+            if(ranNumStr.length<16) {
+                let count = 16 - ranNumStr.length
+                for(let i=0; i<count; i++) ranNumStr += '0'
+            }
         }
         return ranNumStr;
     },
