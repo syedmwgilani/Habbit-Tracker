@@ -387,7 +387,7 @@ class Habits extends Component {
 
                     <div className="day-changer mt05">
                         <button className="day-changer-button" onClick={event => this.previousDay()}>&larr;</button>
-                            <span className="day-changer-text"> {showToday} </span>
+                            <div className="day-changer-text"> {showToday} </div>
                         <button className="day-changer-button" onClick={event => this.nextDay()}>&rarr;</button>
                     </div>
 

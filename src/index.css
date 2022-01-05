@@ -145,6 +145,8 @@ nav a.tab {
 }
 
 .day-changer-text {
+    display: inline-block;
+    width: 10ch;
     font-weight: 900;
     font-size: large;
 }
