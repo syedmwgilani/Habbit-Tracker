@@ -65,7 +65,7 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    text-align: center;
+    filter: drop-shadow(2px 4px 6px black);
 }
 
 .tab {
