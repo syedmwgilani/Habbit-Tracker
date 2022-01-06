@@ -366,18 +366,10 @@ class Habits extends Component {
             )
         })
 
-        let message = habitsEleMap.length === 0 ?
-            (<p className="pl1">
-                No Habits {this.state.dateShortenedFormatString} ! Maybe you might want to create a <Link to="/habit-tracker/habit-template">Habit.</Link>
-            </p>)
-            : (<p className="pl1">
-                Let's see what habits you have for {this.state.dateShortenedFormatString}!
-            </p>)
-
-        const showToday = new Date(this.state.dateShortenedFormatString).toDateString() === new Date().toDateString() 
-                            ?
-                            'Today' 
-                            : this.state.dateShortenedFormatString
+        const showToday = new Date(this.state.dateShortenedFormatString).toDateString() === new Date().toDateString()
+            ?
+            'Today'
+            : this.state.dateShortenedFormatString
 
         return (
             <main className="grid-wrapper">
@@ -387,15 +379,17 @@ class Habits extends Component {
 
                     <div className="day-changer mt05">
                         <button className="day-changer-button" onClick={event => this.previousDay()}>&larr;</button>
-                            <div className="day-changer-text"> {showToday} </div>
+                        <div className="day-changer-text"> {this.state.dayOfTheWeek} {showToday}</div>
                         <button className="day-changer-button" onClick={event => this.nextDay()}>&rarr;</button>
                     </div>
 
-                    <h2>Schedule:</h2>
-                    <span className="pl1">
-                        <b>Day of the Week:</b> {this.state.dayOfTheWeek}
-                    </span>
-                    {message}
+                    {
+                        habitsEleMap.length === 0
+                        &&
+                        (<p className="pt1 text-align-center">
+                            You have no habits scheduled. You might want to create a <Link to="/habit-tracker/habit-template">Habit.</Link>
+                        </p>)
+                    }
                     <ul>
                         {habitsEleMap}
                     </ul>

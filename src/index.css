@@ -118,6 +118,10 @@ nav a.tab {
     margin-right: 1rem;
 }
 
+.text-align-center {
+    text-align: center;
+}
+
 .inline-block {
     display: inline-block;
 }
@@ -137,6 +141,7 @@ nav a.tab {
     width: 10ch;
     font-weight: 900;
     font-size: large;
+    vertical-align: middle;
 }
 
 .day-changer-button {
