@@ -31,26 +31,14 @@ input[type=number]::selection {
 }
 
 header {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
     margin: 0.625rem;
-    display: grid;
-    grid-template-areas: "padding1 logo header-text padding2";
-    grid-template-columns: 4fr 1.5fr 2.5fr 4fr;
-    grid-template-rows: 3rem;
-    /* gap: 0.5rem; */
-    align-items: center;
-}
-
-.logo {
-    grid-area: logo;
-    width: 100%;
-    height: 100%;
-    object-fit: scale-down;
 }
 
 .header-text {
     font-family: var(--secondary-font-family);
-    grid-area: header-text;
-    justify-self: center;
 }
 
 nav {

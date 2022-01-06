@@ -4,7 +4,7 @@ export default function App() {
   return (
     <div className="App">
       <header>
-        <img className="logo" src="logo192.png" alt="Habit Tracker Logo"/>
+        <img className="header-logo" src="logo48.svg" alt="Habit Tracker Logo"/>
         <h1 className="header-text">Habit Tracker</h1>
       </header>
 
