@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 
 export default function App() {
   return (
@@ -9,9 +9,9 @@ export default function App() {
       </header>
 
       <nav>
-        <Link className="tab" to="/habit-tracker/habits">Schedule</Link>
-        <Link className="tab" to="/habit-tracker/habit-template">Add A Habit</Link>
-        <Link className="tab" to="/habit-tracker/habit-templates">All My Habits</Link>
+        <NavLink className={({ isActive }) => isActive ? "active-tab" : "tab"} to="/habit-tracker/habits">Schedule</NavLink>
+        <NavLink className={({ isActive }) => isActive ? "active-tab" : "tab"} to="/habit-tracker/habit-template">Add A Habit</NavLink>
+        <NavLink className={({ isActive }) => isActive ? "active-tab" : "tab"} to="/habit-tracker/habit-templates">All My Habits</NavLink>
       </nav>
 
       <Outlet />

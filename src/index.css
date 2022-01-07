@@ -56,22 +56,30 @@ footer {
     filter: drop-shadow(2px 4px 6px black);
 }
 
-.tab {
+.tab, .active-tab{
     color: var(--secondary-color);
     background-color: var(--secondary-bg-color);
     cursor: pointer;
 }
 
-nav a.tab {
-    display: inline-block;
-    padding: 20px;
-    margin: .125rem;
-    text-decoration: none;
-    border-radius: 10px;
+.active-tab {
+    filter: drop-shadow(2px 4px 6px black);
+    transform: scale(1.1);
+    border: solid;
 }
 
-.tab:hover {
+.tab:hover, .active-tab:hover{
+    filter: drop-shadow(2px 4px 6px black);
+    transform: scale(1.1);
     filter: brightness(0.85);
+}
+
+nav a.tab,nav a.active-tab{
+    display: inline-block;
+    padding: 20px;
+    margin: .4rem;
+    text-decoration: none;
+    border-radius: 10px;
 }
 
 .pAll1 {
