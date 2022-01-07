@@ -110,6 +110,7 @@ class HabitTemplate extends Component {
         const weekdayChecked = Object.values(this.state.weeklyOccurrence).includes(true)
 
         let disableSaveButton = !(this.state.name !== ''
+                                && this.state.name.length <= 20
                                 && weekdayChecked
                                 && this.state.dailyOccurrence !== ''
                                 && this.state.dailyOccurrence >= 1
@@ -140,6 +141,7 @@ class HabitTemplate extends Component {
                             />
                         </label>
                     </div>
+                    <FormErrors showMessage={this.state.name.length > 20} message="Please Enter a Name 20 characters or less." />
 
                     <div className="mt1 pl1 pr1">
                         <WeekInput {...this.state.weeklyOccurrence} onChange={(event) => this.handleInputChange(event)} />
