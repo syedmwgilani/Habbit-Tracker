@@ -38,7 +38,7 @@ class HabitTemplates extends Component {
         // let inactiveHabitTemp = JSON.parse(JSONinactiveHabitTemp)
 
         this.state = {
-            activeHabitTemp: activeHabitTemp ?? []
+            activeHabitTemp: activeHabitTemp ?? {}
             // inactiveHabitTemp: inactiveHabitTemp  
         }
         console.log('CREATED HabitTemplates state: ', this.state);
@@ -74,15 +74,6 @@ class HabitTemplates extends Component {
         // const inactiveHabitTemp = this.state.inactiveHabitTemp
         const daysOfTheWeeks = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
-        let message = activeHabitTemp.length === 0 ?
-            (<p className="">
-                You have no Habits! Maybe you might want to create a <Link to="/habit-tracker/habit-template">Habit.</Link>
-            </p>)
-            :
-            (<p className="">
-                View all my Habits.
-            </p>)
-
         let activeHabitTempList = Object.keys(activeHabitTemp).map(
             (key) =>
                 <li className="mb1" key={key}>
@@ -113,16 +104,20 @@ class HabitTemplates extends Component {
 
         // let inactiveHabits = props.habits.filter(habit => !habit.active)
         // let inactiveHabitNames = inactiveHabits.map(habit => <li>{habit.name}</li>)
-
+        
         return (
             <div className="grid-wrapper">
                 <div></div>{/* Used for sides in grid. Needed to work properly. */}
 
                 <div className="pb5">
-                    <h2>All My Habits:</h2>
-
+                    {
+                        Object.keys(activeHabitTemp).length === 0
+                        &&
+                        (<p className="pt1 text-align-center">
+                            You have no habits scheduled. You might want to create a <Link to="/habit-tracker/habit-template">Habit.</Link>
+                        </p>)
+                    }
                     <div className="pl1">
-                        {message}
                         {/* <h4>Habits:</h4> */}
                         <ul>
                             {activeHabitTempList}
