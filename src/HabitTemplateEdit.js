@@ -11,9 +11,10 @@ function NavigatationSaveButton(props) {
 
     return (
         <SaveButton className="save-button save-button-edit"
-            classNameSaving="save-button save-button-edit save-button-saving"
-            onClick={event => props.onClick()}
-            endOfSaveFunction={event => navigate("/habit-tracker/habit-templates")} />
+                    classNameSaving="save-button save-button-edit save-button-saving"
+                    disableButton={props.disableButton}
+                    onClick={event => props.onClick()}
+                    endOfSaveFunction={event => navigate("/habit-tracker/habit-templates")} />
     );
 }
 
@@ -107,26 +108,16 @@ class HabitTemplateEdit extends Component {
 
     render() {
 
-        let showSaveButton = (
-            <div className="validation-text-container">
-                <div className="validation-text">Please Fill in All Required (*) Fields.</div>
-            </div>
-        )
-
         const weekdayChecked = Object.values(this.state.weeklyOccurrence).includes(true)
-        if (this.state.name !== ''
-            && weekdayChecked
-            && this.state.dailyOccurrence !== ''
-            && this.state.dailyOccurrence >= 1
-            && this.state.startDate !== ''
-            && this.state.valid_startDate
-            && (this.state.valid_endDate
-                || this.state.endDate === '') ) 
-        {
-            showSaveButton = (
-                <NavigatationSaveButton onClick={event => this.saveStateToLocalStorage()} />
-            )
-        }
+
+        let disableSaveButton = !(this.state.name !== ''
+                                && weekdayChecked
+                                && this.state.dailyOccurrence !== ''
+                                && this.state.dailyOccurrence >= 1
+                                && this.state.startDate !== ''
+                                && this.state.valid_startDate
+                                && (this.state.valid_endDate
+                                    || this.state.endDate === ''))
 
         //if the habitId does not exist show message instead of rendering rest of page
         let content = (<p>This Habit does not exist. You might want to go to the <Link to="/habit-tracker/habit-templates">All My Habits</Link> page instead</p>)
@@ -135,6 +126,11 @@ class HabitTemplateEdit extends Component {
             content = (
                 <div className="pb5" >
                     <h2>Edit Habit:</h2>
+
+                    {disableSaveButton &&
+                    (<div className="mt1 mb1 pl1 pr1">
+                        <div className="validation-text pt1 pb1">Please Fill in All Required (*) Fields.</div>
+                    </div>)}
 
                     <div className="pl1 pr1">
                         <label htmlFor="habitNameId">
@@ -196,7 +192,8 @@ class HabitTemplateEdit extends Component {
 
                     <div className="button-container">
                         <NavigatationCancelButton />
-                        {showSaveButton}
+                        <NavigatationSaveButton onClick={event => this.saveStateToLocalStorage()}
+                                                disableButton={disableSaveButton} />
                     </div>
                 </div>
             )
