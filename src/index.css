@@ -9,7 +9,7 @@
     --secondary-bg-color: rgb(198, 90, 198);
     --secondary-font-family: 'Roboto', sans-serif;
 
-    --tertiary-color: rgb(209, 209, 122);
+    --tertiary-color: rgb(255, 255, 99);
 
     --warning-color: rgb(198, 90, 90);
     --warning-bg-color: rgb(198, 90, 90);
@@ -188,7 +188,8 @@ nav a.tab,nav a.active-tab{
 .progress-bar {
     display: inline-block;
     cursor: pointer;
-    border: 2px solid var(--primary-color);
+    border: 3px solid var(--primary-color);
+    filter: drop-shadow(2px 4px 6px black);
     border-radius: 10px;
     position: relative;
     width: 70%;
@@ -449,4 +450,5 @@ svg {
 
 .icon-star-full:before {
     content: "\e9d9";
+    filter: drop-shadow(2px 4px 6px black);
 }
