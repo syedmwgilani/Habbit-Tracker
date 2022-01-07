@@ -11,7 +11,6 @@ function NavigatationSaveButton(props) {
 
     return (
         <SaveButton className="save-button save-button-edit"
-                    classNameSaving="save-button save-button-edit save-button-saving"
                     disableButton={props.disableButton}
                     onClick={event => props.onClick()}
                     endOfSaveFunction={event => navigate("/habit-tracker/habit-templates")} />

@@ -189,7 +189,6 @@ class HabitTemplate extends Component {
 
                     <div className="button-container">
                         <SaveButton className="save-button save-button-add"
-                            classNameSaving="save-button save-button-add save-button-saving"
                             disableButton={disableSaveButton}
                             onClick={event => this.saveStateToLocalStorage()}
                             endOfSaveFunction={event => this.setEmptyState()} />
