@@ -17,7 +17,16 @@ class SaveButton extends Component {
         }, () => {
             setTimeout(
                 () => {
-                    this.props.endOfSaveFunction()
+                    this.setState({
+                        savingMessage: 'Habit Saved!'
+                    }, () => {
+                        setTimeout(
+                            () => {
+                                this.props.endOfSaveFunction()
+                                this.setState({savingMessage: ''})
+                            }, 1000
+                        )
+                    })
                 }
                 , 1000)
         })
@@ -25,12 +34,16 @@ class SaveButton extends Component {
 
     render() {
         let saveButton = (<button className={this.props.className} 
-                                  onClick={event => {
+                                  onClick={ event => {
                                     this.setSaveMessages()
                                     this.props.onClick(event)
-                            }}>Save</button>)
-        if (this.state.savingMessage === 'Saving...') {
-            saveButton = (<button className={this.props.classNameSaving}>Save</button>)
+                                  } }
+                                  disabled={this.props.disableButton}
+                            >Save</button>)
+                            
+        if (this.state.savingMessage !== '') {
+            saveButton = (<button className={this.props.classNameSaving} 
+                                  disabled={true}>Save</button>)
         }
 
         return (

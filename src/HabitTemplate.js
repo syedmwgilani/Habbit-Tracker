@@ -107,38 +107,27 @@ class HabitTemplate extends Component {
 
     render() {
 
-        let showMessageOrSaveButton = (
-            <div className="validation-text-container">
-                <div className="validation-text">Please Fill in All Required (*) Fields.</div>
-            </div>
-        )
-
         const weekdayChecked = Object.values(this.state.weeklyOccurrence).includes(true)
-        if (this.state.name !== '' 
-            && weekdayChecked 
-            && this.state.dailyOccurrence !== ''
-            && this.state.dailyOccurrence >= 1
-            && this.state.startDate !== ''
-            && this.state.valid_startDate 
-            && (this.state.valid_endDate 
-                || this.state.endDate === '')
-            ) {
 
-            showMessageOrSaveButton = (
-                <SaveButton className="save-button save-button-add"
-                            classNameSaving="save-button save-button-add save-button-saving"
-                            onClick={event => this.saveStateToLocalStorage()}
-                            endOfSaveFunction={event => this.setEmptyState()} />
-            )
-
-        }
+        let disableSaveButton = !(this.state.name !== ''
+                                && weekdayChecked
+                                && this.state.dailyOccurrence !== ''
+                                && this.state.dailyOccurrence >= 1
+                                && this.state.startDate !== ''
+                                && this.state.valid_startDate
+                                && (this.state.valid_endDate
+                                    || this.state.endDate === ''))
 
         return (
             <main className="grid-wrapper" >
                 <div></div>{/* Used for sides in grid. Needed to work properly. */}
 
                 <div className="pb5" >
-                    <h2>Add a Habit:</h2>
+
+                    {disableSaveButton &&
+                    (<div className="mt1 mb1 pl1 pr1">
+                        <div className="validation-text pt1 pb1">Please Fill in All Required (*) Fields.</div>
+                    </div>)}
 
                     <div className="pl1 pr1">
                         <label htmlFor="habitNameId">
@@ -199,7 +188,11 @@ class HabitTemplate extends Component {
                     <FormErrors showMessage={Date.parse(this.state.startDate) >= Date.parse(this.state.endDate)} message="Please Enter a Date Greater than the Start Date" />
 
                     <div className="button-container">
-                        {showMessageOrSaveButton}
+                        <SaveButton className="save-button save-button-add"
+                            classNameSaving="save-button save-button-add save-button-saving"
+                            disableButton={disableSaveButton}
+                            onClick={event => this.saveStateToLocalStorage()}
+                            endOfSaveFunction={event => this.setEmptyState()} />
                     </div>
                 </div>
 

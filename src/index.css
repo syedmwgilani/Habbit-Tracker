@@ -296,19 +296,11 @@ input[type=checkbox] {
     display: block;
 }
 
-.validation-text-container {
-    position: relative;
-    height: 6rem;
-}
-
 .validation-text {
-    position: absolute;
-    top: 25%;
-    left: 25%;
-    width: 50%;
-    padding: 0.5rem 1rem;
     background-color: var(--warning-bg-color);
     text-align: center;
+    filter: drop-shadow(2px 4px 6px black);
+    border-radius: 10px;
 }
 
 .validation-text b {
@@ -328,6 +320,11 @@ input[type=checkbox] {
     border-radius: 10px;
     border: 2px solid var(--primary-color);
     cursor: pointer;
+}
+.save-button:disabled {
+    filter: brightness(0.85);
+    opacity: 0.65;
+    cursor: not-allowed;
 }
 
 .save-button:hover {
