@@ -5,7 +5,7 @@ function EditButton(props) {
     const navigate = useNavigate()
 
     return (
-        <button className="edit-button"
+        <button className="edit-button item"
             type="button"
             id={props.id}
             onClick={() => {
@@ -92,8 +92,8 @@ class HabitTemplates extends Component {
                                 }, [])
                             }
                         </div>
-                        <div className="habit-button-container">
-                            <button className="remove-button" type="button" onClick={() => this.handleRemove(key, 'activeHabitTemp')}>
+                        <div className="flex-wrapper">
+                            <button className="remove-button item" type="button" onClick={() => this.handleRemove(key, 'activeHabitTemp')}>
                                 Remove
                             </button>
                             <EditButton id={key} />
