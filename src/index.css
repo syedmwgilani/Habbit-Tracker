@@ -114,6 +114,10 @@ nav a.tab,nav a.active-tab{
     margin-top: 1rem;
 }
 
+.mb05 {
+    margin-bottom: 0.5rem;
+}
+
 .mb1 {
     margin-bottom: 1rem;
 }
@@ -451,4 +455,21 @@ svg {
 .icon-star-full:before {
     content: "\e9d9";
     filter: drop-shadow(2px 4px 6px black);
+}
+
+@media only screen and (max-width: 695px) {
+    .habit-name-small-screen {
+        display: block;
+    }
+    .habit-name-large-screen {
+        display: none;
+    }
+}
+@media only screen and (min-width: 695px) {
+    .habit-name-small-screen {
+        display: none;
+    }
+    .habit-name-large-screen {
+        display: block;
+    }
 }

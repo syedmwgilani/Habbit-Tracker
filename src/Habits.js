@@ -14,7 +14,7 @@ function InnerBar(props) {
     return (
         <div className="inner-bar" style={innerBar}>
             <span className="inner-bar-text-left">+</span>
-            <span className="inner-bar-text-center">{props.name}</span>
+            <span className="inner-bar-text-center habit-name-large-screen">{props.name}</span>
             <span className="inner-bar-text-right">{props.progress} / {props.dailyOccurrence}</span>
         </div>
     )
@@ -356,6 +356,9 @@ class Habits extends Component {
         const habitsEleMap = Object.keys(habits).map((key, i) => {
             return (
                 <li className="pt1 pb1" key={key}>
+                    <div className="habit-name-small-screen mb05">
+                        <b>{activeHabitTemp[key].name}</b>
+                    </div>
                     <ProgressBar
                         name={activeHabitTemp[key].name}
                         dailyOccurrence={activeHabitTemp[key].dailyOccurrence}
