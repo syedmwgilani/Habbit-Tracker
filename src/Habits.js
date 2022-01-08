@@ -114,6 +114,9 @@ class Habits extends Component {
         habit.progress = habit.progress + 1
 
         console.log('UPDATED incremented:', habits[id])
+        
+        window.navigator.vibrate(200)
+
         this.setState({
             habits: habits
         }, this.saveHabitLocalStorage.bind(this))
