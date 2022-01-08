@@ -41,11 +41,6 @@ header {
     font-family: var(--secondary-font-family);
 }
 
-nav {
-    padding: 10px;
-    text-align: center;
-}
-
 footer {
     position: fixed;
     padding: 0.5rem;
@@ -56,10 +51,19 @@ footer {
     filter: drop-shadow(2px 4px 6px black);
 }
 
+nav {
+    margin: 0.625rem;
+    justify-content: center;
+}
+
 .tab, .active-tab{
     color: var(--secondary-color);
     background-color: var(--secondary-bg-color);
     cursor: pointer;
+    flex: 0 0 10%;
+    text-align: center;
+    min-width: 13ch;
+    max-width: 13ch;
 }
 
 .active-tab {
@@ -75,9 +79,7 @@ footer {
 }
 
 nav a.tab,nav a.active-tab{
-    display: inline-block;
-    padding: 20px;
-    margin: .4rem;
+    padding: 1.25rem;
     text-decoration: none;
     border-radius: 10px;
 }
@@ -445,6 +447,10 @@ svg {
     .habit-name-large-screen {
         display: none;
     }
+
+    nav a.tab,nav a.active-tab {
+        padding: .625rem .5rem;
+    }
 }
 @media only screen and (min-width: 695px) {
     .habit-name-small-screen {
@@ -452,5 +458,24 @@ svg {
     }
     .habit-name-large-screen {
         display: block;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+
+    .flex-wrapper {
+        gap: 0.5rem;
+    }
+
+    nav {
+        margin: 0.25rem;
+    }
+
+    .tab, .active-tab{
+        min-width: 11ch;
+        max-width: 11ch;
+    }
+    nav a.tab,nav a.active-tab {
+        padding: .625rem .1rem;
     }
 }

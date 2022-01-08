@@ -8,7 +8,7 @@ export default function App() {
         <h1 className="header-text">Habit Tracker</h1>
       </header>
 
-      <nav>
+      <nav className="flex-wrapper">
         <NavLink className={({ isActive }) => isActive ? "active-tab" : "tab"} to="/habit-tracker/habits">Schedule</NavLink>
         <NavLink className={({ isActive }) => isActive ? "active-tab" : "tab"} to="/habit-tracker/habit-template">Add A Habit</NavLink>
         <NavLink className={({ isActive }) => isActive ? "active-tab" : "tab"} to="/habit-tracker/habit-templates">All My Habits</NavLink>
