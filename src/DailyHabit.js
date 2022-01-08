@@ -23,21 +23,19 @@ function DailyHabit(props) {
             <div className="habit-name-small-screen mb05">
                 <b>{props.name}</b>
             </div>
-            <div className="star-container">
-                <div className="star-inner-content">
-                    {props.progress >= props.dailyOccurrence
-                    && <span className="icon-star-full"></span>}
+            <div className="flex-wrapper">
+                <div className="star-container">
+                    <div className="star-inner-content">
+                        {props.progress >= props.dailyOccurrence
+                            && <span className="icon-star-full"></span>}
+                    </div>
                 </div>
-            </div>
-            <ProgressBar
-                name={props.name}
-                dailyOccurrence={props.dailyOccurrence}
-                progress={props.progress}
-                onClick={props.onClick} />
-            <div className="decrement-button ml1" onClick={props.onClickDecrement}>
-                <div className="decrement-inner-button">
-                    <span className="decrement-inner-button-content">-</span>
-                </div>
+                <ProgressBar
+                    name={props.name}
+                    dailyOccurrence={props.dailyOccurrence}
+                    progress={props.progress}
+                    onClick={props.onClick} />
+                <button className="decrement-button" onClick={props.onClickDecrement}> - </button>
             </div>
         </li>
     )

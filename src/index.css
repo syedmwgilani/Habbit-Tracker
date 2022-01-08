@@ -144,6 +144,12 @@ nav a.tab,nav a.active-tab{
     grid-gap: 1rem;
 }
 
+.flex-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
 .day-changer {
     text-align: center;
 }
@@ -178,7 +184,7 @@ nav a.tab,nav a.active-tab{
 .star-container {
     display: inline-block;
     position: relative;
-    width: 10%;
+    flex-grow: 1;
     height: 40px;
 }
 
@@ -196,9 +202,8 @@ nav a.tab,nav a.active-tab{
     filter: drop-shadow(2px 4px 6px black);
     border-radius: 10px;
     position: relative;
-    width: 70%;
+    flex-grow: 9;
 }
-
 .progress-bar:hover {
     filter: brightness(0.85);
 }
@@ -208,25 +213,12 @@ nav a.tab,nav a.active-tab{
     cursor: pointer;
     border: 2px solid var(--primary-color);
     border-radius: 10px;
-    position: relative;
-    width: 10%;
+    font-weight: 900;
+    font-size: xx-large;
+    flex-grow: 1;
 }
 .decrement-button:hover {
     filter: brightness(0.85);
-}
-
-.decrement-inner-button {
-    border-radius: 10px;
-    height: 40px;
-}
-
-.decrement-inner-button-content {
-    background-color: rgba(0, 0, 0, 0);
-    position: absolute;
-    left: 40%;
-    top: 2px;
-    font-weight: 900;
-    font-size: xx-large;
 }
 
 .inner-bar {
