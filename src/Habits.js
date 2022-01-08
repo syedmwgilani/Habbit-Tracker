@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const { addPrefix } = require('./helperModule.js')
 
 
-function InnerBar(props) {
+function ProgressBar(props) {
     const progPercent = Math.round(props.progress / props.dailyOccurrence * 100)
     const barSize = progPercent < 100 ? progPercent : 100
 
@@ -12,35 +12,39 @@ function InnerBar(props) {
     }
 
     return (
-        <div className="inner-bar" style={innerBar}>
-            <span className="inner-bar-text-left">+</span>
-            <span className="inner-bar-text-center habit-name-large-screen">{props.name}</span>
-            <span className="inner-bar-text-right">{props.progress} / {props.dailyOccurrence}</span>
+        <div className="progress-bar" onClick={props.onClick}>
+            <div className="inner-bar" style={innerBar}>
+                <span className="inner-bar-text-left">+</span>
+                <span className="inner-bar-text-center habit-name-large-screen">{props.name}</span>
+                <span className="inner-bar-text-right">{props.progress} / {props.dailyOccurrence}</span>
+            </div>
         </div>
     )
 }
 
-function ProgressBar(props) {
-    const star = props.progress >= props.dailyOccurrence ? <span className="icon-star-full"></span> : <span></span>
-
+function DailyHabit(props) {
     return (
-        <div>
+        <li className="pt1 pb1">
+            <div className="habit-name-small-screen mb05">
+                <b>{props.name}</b>
+            </div>
             <div className="star-container">
                 <div className="star-inner-content">
-                    {star}
+                    {props.progress >= props.dailyOccurrence
+                    && <span className="icon-star-full"></span>}
                 </div>
             </div>
-            <div className="progress-bar" onClick={props.onClick}>
-                <InnerBar progress={props.progress}
-                    name={props.name}
-                    dailyOccurrence={props.dailyOccurrence} />
-            </div>
+            <ProgressBar
+                name={props.name}
+                dailyOccurrence={props.dailyOccurrence}
+                progress={props.progress}
+                onClick={props.onClick} />
             <div className="decrement-button ml1" onClick={props.onClickDecrement}>
                 <div className="decrement-inner-button">
                     <span className="decrement-inner-button-content">-</span>
                 </div>
             </div>
-        </div>
+        </li>
     )
 }
 
@@ -353,19 +357,15 @@ class Habits extends Component {
         const activeHabitTemp = this.state.activeHabitTemp
         const habits = this.state.habits
 
-        const habitsEleMap = Object.keys(habits).map((key, i) => {
+        const habitsEleMap = Object.keys(habits).map((key) => {
             return (
-                <li className="pt1 pb1" key={key}>
-                    <div className="habit-name-small-screen mb05">
-                        <b>{activeHabitTemp[key].name}</b>
-                    </div>
-                    <ProgressBar
-                        name={activeHabitTemp[key].name}
-                        dailyOccurrence={activeHabitTemp[key].dailyOccurrence}
-                        progress={habits[key].progress}
-                        onClick={event => this.incrementProgress(key)}
-                        onClickDecrement={event => this.decrementProgress(key)} />
-                </li>
+                <DailyHabit
+                    key={key}
+                    name={activeHabitTemp[key].name}
+                    dailyOccurrence={activeHabitTemp[key].dailyOccurrence}
+                    progress={habits[key].progress}
+                    onClick={event => this.incrementProgress(key)}
+                    onClickDecrement={event => this.decrementProgress(key)} />
             )
         })
 
